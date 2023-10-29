@@ -1,120 +1,420 @@
-\chapter{Specifikacija programske potpore}
-		
-	\section{Funkcionalni zahtjevi}
-			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Navesti \textbf{dionike} koji imaju \textbf{interes u ovom sustavu} ili  \textbf{su nositelji odgovornosti}. To su prije svega korisnici, ali i administratori sustava, naručitelji, razvojni tim.}\\
-				
-			\textit{Navesti \textbf{aktore} koji izravno \textbf{koriste} ili \textbf{komuniciraju sa sustavom}. Oni mogu imati inicijatorsku ulogu, tj. započinju određene procese u sustavu ili samo sudioničku ulogu, tj. obavljaju određeni posao. Za svakog aktora navesti funkcionalne zahtjeve koji se na njega odnose.}\\
-			
-			
-			\noindent \textbf{Dionici:}
-			
-			\begin{packed_enum}
-				
-				\item Dionik 1
-				\item Dionik 2				
-				\item ...
-				
-			\end{packed_enum}
-			
-			\noindent \textbf{Aktori i njihovi funkcionalni zahtjevi:}
-			
-			
-			\begin{packed_enum}
-				\item  \underbar{Aktor 1 (inicijator) može:}
-				
-				\begin{packed_enum}
-					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
-					\begin{packed_enum}
-						
-						\item  podfunkcionalnost 1 
-						\item  podfunkcionalnost 2
-				
-					\end{packed_enum}
-					\item  funkcionalnost 3
-					
-				\end{packed_enum}
-			
-				\item  \underbar{Aktor 2 (sudionik) može:}
-				
-				\begin{packed_enum}
-					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
-					
-				\end{packed_enum}
-			\end{packed_enum}
-			
-			\eject 
-			
-			
-				
-			\subsection{Obrasci uporabe}
-				
-				\textbf{\textit{dio 1. revizije}}
-				
-				\subsubsection{Opis obrazaca uporabe}
-					\textit{Funkcionalne zahtjeve razraditi u obliku obrazaca uporabe. Svaki obrazac je potrebno razraditi prema donjem predlošku. Ukoliko u nekom koraku može doći do odstupanja, potrebno je to odstupanje opisati i po mogućnosti ponuditi rješenje kojim bi se tijek obrasca vratio na osnovni tijek.}\\
-					
+\documentclass[12pt]{report}  
 
-					\noindent \underbar{\textbf{UC$<$broj obrasca$>$ -$<$ime obrasca$>$}}
-					\begin{packed_item}
+\usepackage[croatian]{babel} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage{mathdots}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{lastpage}
+\usepackage{etoolbox}
+\usepackage{tabularray}
+\usepackage{color, colortbl}
+\usepackage{adjustbox}
+\usepackage{geometry}
+\usepackage[classicReIm]{kpfonts}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\usepackage{float}
+\usepackage{setspace}
+\restylefloat{table}
+
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{Specifikacija programske potpore}
+
+\section{Funkcionalni zahtjevi}
+
+\noindent \textbf{Dionici:}
+
+\begin{enumerate}
 	
-						\item \textbf{Glavni sudionik: }$<$sudionik$>$
-						\item  \textbf{Cilj:} $<$cilj$>$
-						\item  \textbf{Sudionici:} $<$sudionici$>$
-						\item  \textbf{Preduvjet:} $<$preduvjet$>$
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
+	\item Kupci 
+	\item Ponuditelji
+	\begin{enumerate}
+		\item Izdavač
+		\item Antikvarijat
+		\item Preprodavač
+	\end{enumerate}	
+	\item Administrator		
+	\item Razvojni tim
 	
-							\item $<$opis korak jedan$>$
-							\item $<$opis korak dva$>$
-							\item $<$opis korak tri$>$
-							\item $<$opis korak četiri$>$
-							\item $<$opis korak pet$>$
-						\end{packed_enum}
-						
-						\item  \textbf{Opis mogućih odstupanja:}
-						
-						\item[] \begin{packed_item}
+\end{enumerate}
+
+\noindent \textbf{Aktori i njihovi funkcionalni zahtjevi:}
+
+
+\begin{enumerate}
+	\item  \underbar{Neregistrirani korisnik (inicijator) može:}
 	
-							\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[] \begin{packed_enum}
-								
-								\item $<$opis rješenja mogućeg scenarija korak 1$>$
-								\item $<$opis rješenja mogućeg scenarija korak 2$>$
-								
-							\end{packed_enum}
-							\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
-							
-						\end{packed_item}
-					\end{packed_item}
-				
-					
-				\subsubsection{Dijagrami obrazaca uporabe}
-					
-					\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
-				\eject		
-				
-			\subsection{Sekvencijski dijagrami}
-				
-				\textbf{\textit{dio 1. revizije}}\\
-				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
-				\eject
-	
-		\section{Ostali zahtjevi}
+	\begin{enumerate}
 		
-			\textbf{\textit{dio 1. revizije}}\\
-		 
-			 \textit{Nefunkcionalni zahtjevi i zahtjevi domene primjene dopunjuju funkcionalne zahtjeve. Oni opisuju \textbf{kako se sustav treba ponašati} i koja \textbf{ograničenja} treba poštivati (performanse, korisničko iskustvo, pouzdanost, standardi kvalitete, sigurnost...). Primjeri takvih zahtjeva u Vašem projektu mogu biti: podržani jezici korisničkog sučelja, vrijeme odziva, najveći mogući podržani broj korisnika, podržane web/mobilne platforme, razina zaštite (protokoli komunikacije, kriptiranje...)... Svaki takav zahtjev potrebno je navesti u jednoj ili dvije rečenice.}
-			 
-			 
-			 
+		\item pretraživati ponude knjiga
+		\begin{enumerate}
+			
+			\item  po značajkama knjige (naziv, autori, godina izdanja, izdavač,
+			kategorija izdavača (domaći, strani), žanr, ISBN, broj izdanja, stanje očuvanosti,
+			tekstni opis, slika korica, oznaka vrste knjige i lista ponuda)
+			\item  po nazivu ponuditelja (izlistati sve knjige dotičnog)
+			\item na karti (npr. OpenStreetMap) gdje su označene lokacije svih ponuditelja knjiga
+			
+		\end{enumerate}
+		\item  zatražiti od izdavača da kontaktira stranog izdavača oko prijevoda strane knjige na hrvatski jezik
+		
+		\item vidjeti popis dostupnih ponuda za odabranu knjigu, uključujući naziv ponuditelja, broj dostupnih primjeraka i cijenu knjige kod svakog ponuditelja
+		
+		
+		
+	\end{enumerate}
 	
+	\item  \underbar{Svaki ponuditelj (izdavač, antikvarijat, preprodavač) (inicijator) može:}
+	
+	\begin{enumerate}
+		
+		\item ponuditi neograničeni broj naslova knjiga i primjeraka knjiga
+		\item uklanjati primjerke već postojeće knjige 
+		
+	\end{enumerate}
+	
+	\item \underbar{Izdavač (inicijator) može:}
+	
+	zatražiti izdavača strane knjige za dozvolu prijevoda knjige sa stranog ili srodnog jezika na hrvatski jezik
+	
+	\item \underbar{Antikvarijat (inicijator) može:}
+	
+	nuditi knjige na stranom jeziku, srodnom jeziku ili hrvatskom jeziku
+	
+	
+	\item \underbar{Preprodavač (inicijator) može:}
+	
+	nuditi sve vrste knjiga, uključujući i one koje nisu na drugačiji način dobavljive na području
+	Hrvatske
+	
+	\item \underbar{Administrator (inicijator) može:}
+	\begin{enumerate}
+		\item odobriti registracije ponuditelja
+		\item upravljati korisničkim računima
+		\item riješavati sporove i pratiti komunikaciju između neregistriranih korisnika i ponuditelja
+	\end{enumerate}
+		
+	\item \underbar{Baza podataka (sudionik):}
+	
+	\begin{enumerate}
+		
+		\item pohranjuje sve podatke o korisnicima i njihovim ovlastima
+		
+		\item pohranjuje sve podatke o knjigama kao i zahtjeve za prijevod za svaku knjigu na stranom jeziku
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\eject 
+
+
+
+\subsection{Obrasci uporabe}
+
+\subsubsection{Opis obrazaca uporabe}
+
+\noindent \underbar{\textbf{UC1 - Pregled knjiga na karti}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: }Neregistrirani korisnik
+	\item  \textbf{Cilj:} Pregledati dostupne knjige uz pomoć karte
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} - 
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Karta je prikazana prilikom učitavanja aplikacije
+		\item Neregistrirani korisnik odabire ponuditelja na karti
+		\item Izlistavaju se sve knjige dotičnog ponuditelja
+		
+	\end{enumerate}
+
+\end{enumerate}
+
+
+\noindent \underbar{\textbf{UC2 - Registracija}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: }Neregistrirani korisnik
+	\item  \textbf{Cilj:} Stvoriti korisnički račun za pristup sustavu 
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} - 
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Korisnik odabire opciju za registraciju
+		\item Korisnik unosi potrebne korisničke podatke i bira između 3 navedene vrste ponuditelja
+		\item Korisnik prima obavijest o uspješnoj registraciji nakon administratorskog pregleda
+		
+	\end{enumerate}
+	
+		
+	\item  \textbf{Opis mogućih odstupanja:}
+	
+	\item[] \begin{enumerate}
+		
+		\item[2.a] Odabir već zauzetog korisničkog imena i/ili e-maila, unos korisničkog
+		podatka u nedozvoljenom formatu ili pružanje neispravnoga e-maila ili odabir adrese koja se ne podudara sa pravilima aplikacije
+		\item[] \begin{enumerate}
+			
+			\item Sustav obavještava korisnika o neuspjelom upisu i vraća ga na stra-
+			nicu za registraciju
+			\item Korisnik mijenja potrebne podatke te završava unos ili odustaje od registracije
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\noindent \underbar{\textbf{UC3 - Prijava u sustav}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: } Ponuditelj
+	\item  \textbf{Cilj:} Autentifikacija korisnika
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} Registracija
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Unos korisničkog imena i lozinke
+		\item Potvrda o ispravnosti unesenih podataka
+		\item Pristup funkcijama registriranih korisnika, ovisno o tipu ponuditelja
+		
+	\end{enumerate}
+	
+	\item  \textbf{Opis mogućih odstupanja:}
+	
+	\item[] \begin{enumerate}
+		
+		\item[2.a] Neispravno korisničko ime/lozinka
+		\item[] \begin{enumerate}
+			
+			\item Sustav obavještava korisnika o neuspjelom upisu i vraća ga na stra-
+			nicu za prijavu
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\noindent \underbar{\textbf{UC4 - Pretraživanje knjiga po značajkama knjige}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: } Neregistrirani korisnik
+	\item  \textbf{Cilj:} Pronalazak željene knjige
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} -
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Unos značajki knjige u odgovarajuće polje
+		\item Izlistavanje knjiga koje se podudaraju sa tim značajkama
+		
+	\end{enumerate}
+	
+	\item  \textbf{Opis mogućih odstupanja:}
+	
+	\item[] \begin{enumerate}
+		
+		\item[2.a] Nepodudaranje sa ijednom knjigom u bazi podataka
+		\item[] \begin{enumerate}
+			
+			\item Sustav obavještava korisnika o tome da knjiga ili ne postoji ili nije dostupna
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\noindent \underbar{\textbf{UC5 - Pretraživanje knjiga po nazivu ponuditelja}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: } Neregistrirani korisnik
+	\item  \textbf{Cilj:} Izlistavanje knjiga određenog ponuditelja
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} -
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Unos naziva ponuditelja u odgovarajuće polje
+		\item Izlistavanje knjiga koje su na ponuditeljevom popisu
+		
+	\end{enumerate}
+	
+	\item  \textbf{Opis mogućih odstupanja:}
+	
+	\item[] \begin{enumerate}
+		
+		\item[2.a] Nepodudaranje sa ijednim ponuditeljem u bazi podataka
+		\item[] \begin{enumerate}
+			
+			\item Sustav obavještava korisnika o tome da ponuditelj ili ne postoji ili nema nijednu knjigu na trenutnoj ponudi
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\noindent \underbar{\textbf{UC6 - Zatražiti izdavača da kontaktira stranog izdavača oko prijevoda strane knjige na hrvatski jezik}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: } Neregistrirani korisnik
+	\item  \textbf{Cilj:} Zatražiti prijevod strane knjige na hrvatski jezik
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} Izdavač postoji i pronađen je kroz search
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+	 
+		\item Neregistrirani korisnik upiše značajke strane knjige
+		\item Sustav obavještava korisnika da je upit poslan
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\noindent \underbar{\textbf{UC7 - Dodavanje knjige}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: } Ponuditelj
+	\item  \textbf{Cilj:} Dodati dostupnu knjigu 
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} Ponuditelj je prijavljen u sustav
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Ponuditelj odabere opciju za dodavanje primjerka knjige
+		\item Ponuditelj upisuje sve značajke knjige   
+		\item Potvrda o upisu knjige u bazu podataka kao nove knjige ili kao još jedan primjerak već postojeće
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\noindent \underbar{\textbf{UC8 - Uklanjanje knjige}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: } Ponuditelj
+	\item  \textbf{Cilj:} Izbrisati primjerak knjige
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} Ponuditelj je prijavljen u sustav
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Ponuditelj odabere opciju za brisanje primjerka knjige
+		\item Ponuditelj upisuje sve značajke knjige 
+		\item Potvrda o smanjenju primjeraka knjige 
+		
+	\end{enumerate}
+	
+	\item  \textbf{Opis mogućih odstupanja:}
+	
+	\item[] \begin{enumerate}
+		
+		\item[2.a] Ponuditelj nije niti nudio knjigu ili je već na 0 primjeraka 
+		\item[] \begin{enumerate}
+			
+			\item Sustav obavještava ponuditelja o nemogućnosti uklanjanja primjerka određene knjige
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\noindent \underbar{\textbf{UC9 - Uređivanje knjige}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: } Ponuditelj
+	\item  \textbf{Cilj:} Urediti knjigu
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} Ponuditelj je prijavljen u sustav
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Ponuditelj odabere opciju za uređivanje knjige
+		\item Ponuditelj upisuje promjene značajke knjige 
+		\item Ponuditelj sprema promjene
+		\item Sustav potvrđuje promjene
+		
+	\end{enumerate}
+	
+	\item  \textbf{Opis mogućih odstupanja:}
+	
+	\item[] \begin{enumerate}
+		
+		\item[2.a] Ponuditelj nije niti nudio knjigu ili je već na 0 primjeraka 
+		\item[] \begin{enumerate}
+			
+			\item Sustav obavještava ponuditelja o nemogućnosti uklanjanja primjerka određene knjige
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\noindent \underbar{\textbf{UC10 - Neregistrirani korisnik vidi podatke za odabranu knjigu}}
+\begin{enumerate}
+	
+	\item \textbf{Glavni sudionik: } Ponuditelj
+	\item  \textbf{Cilj:} 
+	\item  \textbf{Sudionici:} Baza podataka
+	\item  \textbf{Preduvjet:} Knjiga postoji u bazi podataka
+	\item  \textbf{Opis osnovnog tijeka:}
+	
+	\begin{enumerate}
+		
+		\item Neregistrirani korisnik klikne na knjigu 
+		\item Ispisuje se popis dostupnih ponuda za odabranu knjigu, uključujući naziv ponuditelja, broj dostupnih primjeraka i cijenu knjige kod svakog ponuditelja.
+		\item Potvrda o smanjenju primjeraka knjige 
+		
+	\end{enumerate}
+	
+	\item  \textbf{Opis mogućih odstupanja:}
+	
+	\item[] \begin{enumerate}
+		
+		\item[2.a] Ponuditelj nije niti nudio knjigu ili je već na 0 primjeraka 
+		\item[] \begin{enumerate}
+			
+			\item Sustav obavještava ponuditelja o nemogućnosti uklanjanja primjerka određene knjige
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\section{Ostali zahtjevi}
+\begin{itemize}
+	\item Sustav treba podržavati rad više korisnika u stvarnom vremenu
+	\item Ponuditelj može dodati bilo koju knjigu za koju želi da bude ponuđena u aplikaciji, a drugim kanalima može nuditi neke druge knjige
+	\item Komunikacija neregistriranih korisnika (onih koji traže neku knjigu) i ponuditelja ne odvija se kroz aplikaciju, već za to služe drugi kanali komunikacije (npr. e-pošta, telefon)
+	\item Korisničko sučelje i sustav moraju podržavati hrvatsku abecedu (dijakritičke znakove) pri unosu i prikazu tekstualnog sadržaja
+	\item Aplikacija treba biti izvedena kao web aplikacija prilagođena (engl. Responsive) mobilnom uređaju ili tabletu
+	\item Registrirani korisnici trebaju joj pristupati uz pomoć korisničkog imena i lozinke
+	\item Nadogradnja sustava ne smije narušavati postojeće funkcionalnosti sustava
+\end{itemize}
+
+
+
+\end{document}
