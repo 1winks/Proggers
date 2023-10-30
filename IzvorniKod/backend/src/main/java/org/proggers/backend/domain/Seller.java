@@ -2,6 +2,8 @@ package org.proggers.backend.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Seller {
     @Id @GeneratedValue
@@ -16,14 +18,22 @@ public class Seller {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    private String name, mail, address, telephone;
+    @Column(nullable = false)
+    private String name, mail, address, city, country, telephone;
 
-    public Seller(Long id, Type type, String name, String mail, String address, String telephone) {
+    @OneToMany(mappedBy = "seller")
+    private List<Book> books;
+
+    private Seller() {};
+
+    public Seller(Long id, Type type, String name, String mail, String address, String city, String country, String telephone) {
         this.id = id;
         this.type = type;
         this.name = name;
         this.mail = mail;
         this.address = address;
+        this.city = city;
+        this.country = country;
         this.telephone = telephone;
     }
 
@@ -57,6 +67,22 @@ public class Seller {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getTelephone() {
