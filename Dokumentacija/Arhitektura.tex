@@ -1,16 +1,37 @@
 \chapter{Arhitektura i dizajn sustava}
-		
-		\textbf{\textit{dio 1. revizije}}\\
 
-		\textit{ Potrebno je opisati stil arhitekture te identificirati: podsustave, preslikavanje na radnu platformu, spremišta podataka, mrežne protokole, globalni upravljački tok i sklopovsko-programske zahtjeve. Po točkama razraditi i popratiti odgovarajućim skicama:}
+Kako bi se omogućio ispravan rad web aplikacije te interakcija između korisnika i nje potrebno je nekoliko osnovnih komponenata. To su:
+
 	\begin{itemize}
-		\item 	\textit{izbor arhitekture temeljem principa oblikovanja pokazanih na predavanjima (objasniti zašto ste baš odabrali takvu arhitekturu)}
-		\item 	\textit{organizaciju sustava s najviše razine apstrakcije (npr. klijent-poslužitelj, baza podataka, datotečni sustav, grafičko sučelje)}
-		\item 	\textit{organizaciju aplikacije (npr. slojevi frontend i backend, MVC arhitektura) }		
+		\item \textbf{Web preglednik}
+		\item \textbf{Web aplikacija}
+		\item \textbf{Web poslužitelj}
+		\item \textbf{Baza podataka i njezin poslužitelj}		
 	\end{itemize}
 
+	\begin{figure}[H]
+		\includegraphics[scale=0.4]{slike/komunikacijaKomponenata.PNG}
+		\centering
+		\caption{Prikaz komunikacije između navedenih dijelova sustava}
+		\label{fig:skicaKomunijacije}
+	\end{figure}
+
 	
-		
+	Web preglednik (klijent) šalje zahtjeve poslužitelju te prima odgovore kako bi prikazao sadržaj potreban korisniku. Nakon što dohvati programski kod te označni (markup) tekst potreban za prikaz web stranice, on prevodi taj kod i prikazuje ga korisniku na unaprijed definiran način. Način na koji će preglednik prikazati određeni element ili strukturu markup teksta nije propisan samim markup kodom, već ga određuje sam preglednik. Osim osnovnog koda stranice (.html), preglednik dohvaća i .css i .js datoteke te multimedijske sadržaje kao što su slike, videozapisi, zvuk i sl. \vspace{\baselineskip}
+	
+Sama komunikacija između preglednika i poslužitelja odvija se protokolom HTTP (Hypertext transfer protokol). Nakon što poslužitelj primi HTTP zahtjev, prosljeđuje ga web aplikaciji koja ga zatim obrađuje. Rezultat obrade se, nakon toga, vraća poslužitelju, koji ga prosljeđuje natrag korisniku u obliku HTTP odgovora. Tijekom obrade zahtjeva, ovisno o njegovoj prirodi, web aplikacija ponekad treba pristupiti bazi podataka. Bazi podataka se pristupa putem upita (npr. SQL). Koristit ćemo relacijsku bazu podataka i sustav PostgreSQL. Naime, s navedenom vrstom baza smo najbolje upoznati i imamo najviše iskustva u radu s njima. Osim toga, smatramo da nam omogućava ostvarenje svih planiranih funkcionalnosti potrebnih za našu aplikaciju. PostgreSQL se također temelji na modelu klijent – poslužitelj. Poslužitelj je u ovom slučaju povezan s bazom podataka te prima upite koje šalje web aplikacija. Server ih procesuira, pribavlja tražene informacije iz baze podataka te ih šalje aplikaciji. Aplikacija tada može dovršiti započetu operaciju tj. obraditi zahtjev korisnika/preglednika. \vspace{\baselineskip}
+
+Za izradu aplikacije koristit ćemo programski jezik Java. Naime, to je jezik s kojim je većina članova našeg tima najbolje upoznata. Kako bismo ostvarili funkcionalnost backenda za našu aplikaciju, uz programski jezik Java koristit ćemo Spring radni okvir (framework). Za frontend ćemo koristiti JavaScript i njegov React library koji će nam omogućiti jednostavniju i elegantniju izradu web stranice. \vspace{\baselineskip}
+
+Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ovaj način razvoja aplikacije ima brojne prednosti, ponajviše glede odvojenog razvoja dijelova aplikacije. S obzirom na to da su odgovornosti razdvojene kad se primjenjuje ova arhitektura, mnogo je lakše zasebno razvijati svaki dio te ga testirati odvojeno od ostalih. Olakšano je pronalaženje pogrešaka u programskom kodu te vršenje izmjena nad postojećim dijelovima projekta, bez većeg kompromitiranja postojećih funkcionalnosti. Osim toga, ovakav pristup olakšao bi rad na skalabilnosti aplikacije, ako bi to bilo potrebno u bilo kojem trenutku. Još jedan od razloga za korištenje arhitekture temeljene na MVC načelu je činjenica da ju podržava Spring radni okvir koji koristimo. Dijelovi ove arhitekture su sljedeći:
+
+\begin{itemize}
+\item \textbf{Model} – obuhvaća logiku i funkcionalnost aplikacije u smislu obrade podataka i upravljanja istima. Prima podatke od controllera i na temelju toga izvršava potrebne radnje nad podatcima te vraća rezultat natrag.
+
+\item \textbf{Controller} – poveznica između model i view komponenata. Prihvaća zahtjeve poslane od strane korisnika te određuje kako odgovoriti na njih. Te informacije prosljeđuje modelu. Kad od modela dobije odgovor, rezultat obrade vraća korisniku putem view komponente. Podatci koje controller dobiva od korisnika mogu biti klikovi na gumbe, poslani obrasci i sl.
+
+\item \textbf{View} – odnosi se na front end stranu aplikacije. To su dijelovi aplikacije koje korisnik vidi i s kojima izravno komunicira. View pribavlja podatke od modela te ih prikazuje na zaslonu računala na način razumljiv čovjeku. To su HTML, CSS datoteke i JS skripte na strani klijenta. 
+\end{itemize}
 
 		
 
