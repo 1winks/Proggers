@@ -2,22 +2,22 @@ package org.proggers.backend.domain;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Book {
     @Id @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
-    private String title, language;
+    private String title, author;
 
-    @ManyToOne @JoinColumn(name = "sellerId")
-    private Seller seller;
+    @OneToMany(mappedBy = "book")
+    private Set<Edition> edition;
 
-    public Book(Long id, String title, String language, Seller seller) {
+    public Book(Long id, String title) {
         this.id = id;
         this.title = title;
-        this.language = language;
-        this.seller = seller;
     }
 
     public Long getId() {
@@ -26,13 +26,5 @@ public class Book {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public Seller getSeller() {
-        return seller;
     }
 }

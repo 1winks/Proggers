@@ -2,7 +2,7 @@ package org.proggers.backend.domain;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Seller {
@@ -18,24 +18,16 @@ public class Seller {
     @Enumerated(EnumType.STRING)
     private Type type;
 
+    @Column(nullable = false, unique = true)
+    private String name, mail, telephone;
+
     @Column(nullable = false)
-    private String name, mail, address, city, country, telephone;
+    private String address, country;
 
     @OneToMany(mappedBy = "seller")
-    private List<Book> books;
+    private Set<Offer> offers;
 
     private Seller() {};
-
-    public Seller(Long id, Type type, String name, String mail, String address, String city, String country, String telephone) {
-        this.id = id;
-        this.type = type;
-        this.name = name;
-        this.mail = mail;
-        this.address = address;
-        this.city = city;
-        this.country = country;
-        this.telephone = telephone;
-    }
 
     public Long getId() {
         return id;
@@ -67,14 +59,6 @@ public class Seller {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getCountry() {
