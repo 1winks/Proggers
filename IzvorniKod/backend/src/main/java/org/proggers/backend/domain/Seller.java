@@ -27,6 +27,19 @@ public class Seller {
     @OneToMany(mappedBy = "seller")
     private Set<Offer> offers;
 
+    @OneToOne(cascade = CascadeType.ALL) @JoinTable(
+            name = "jt-seller-publisher",
+            joinColumns = {
+                    @JoinColumn(name = "seller-id", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "publisher-id", referencedColumnName = "id")
+            }
+    )
+    private Publisher publisher;
+
+    // TODO: Password field
+
     private Seller() {};
 
     public Long getId() {

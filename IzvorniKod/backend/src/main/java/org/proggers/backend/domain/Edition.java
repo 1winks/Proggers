@@ -46,4 +46,7 @@ public class Edition {
 
     @ManyToOne @JoinColumn(name = "book-id")
     private Book book;
+
+    @ManyToOne @JoinColumn(name = "publisher-id")
+    private Publisher publisher;
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 public class Offer {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    public long id;
 
     public enum State {
         NEW,
