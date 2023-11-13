@@ -24,8 +24,6 @@ public class Edition {
         RELATED;
     }
 
-    // TODO: Spojiti sa novim izdavac entitetom (Ne mora biti registrirani korisnik Seller)
-
     @Enumerated(EnumType.STRING) @Column(nullable = false)
     private Type type;
 
@@ -49,4 +47,34 @@ public class Edition {
 
     @ManyToOne @JoinColumn(name = "publisher-id")
     private Publisher publisher;
+
+    private Edition () {}
+
+    public long getISBN() {
+        return ISBN;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public Boolean isLocallyPurchasable() {
+        return locallyPurchasable;
+    }
+
+    public long getReleaseYear() {
+        return releaseYear;
+    }
+
+    public Set<Offer> getOffers() {
+        return offers;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
 }

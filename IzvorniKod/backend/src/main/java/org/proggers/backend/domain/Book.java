@@ -10,15 +10,12 @@ public class Book {
     private Long id;
 
     @Column(nullable = false)
-    private String title, author;
+    private String title, author, cover, description, genre;
 
     @OneToMany(mappedBy = "book")
-    private Set<Edition> edition;
+    private Set<Edition> editions;
 
-    public Book(Long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
+    private Book () {}
 
     public Long getId() {
         return id;
@@ -26,5 +23,25 @@ public class Book {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public Set<Edition> getEditions() {
+        return editions;
     }
 }

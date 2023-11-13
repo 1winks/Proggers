@@ -35,4 +35,26 @@ public class Offer {
      */
     @ManyToOne @JoinColumn(name = "edition-id")
     private Edition edition;
+
+    private Offer () {}
+
+    public long getId() {
+        return id;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public long getCopies() {
+        return copies;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public Edition getEdition() {
+        return edition;
+    }
 }

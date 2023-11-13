@@ -26,4 +26,26 @@ public class Publisher {
 
     @OneToMany(mappedBy = "publisher")
     private Set<Edition> editions;
+
+    private Publisher () {}
+
+    public long getId() {
+        return id;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public Set<Edition> getEditions() {
+        return editions;
+    }
 }
