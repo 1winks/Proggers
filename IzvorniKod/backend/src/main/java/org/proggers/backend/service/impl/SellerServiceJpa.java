@@ -39,8 +39,12 @@ public class SellerServiceJpa implements SellerService {
             List<String> relatedCountries = Arrays.asList("Croatia", "Slovenia", "Serbia", "Bosnia and Herzegovina", "Montenegro");
             Assert.isTrue(relatedCountries.contains(sellerCountry), "Reseller must be from Croatia or countries with a related language.");
         }
-
+        
         String sellerMail = seller.getMail();
+        int i = sellerMail.indexOf('@');
+        Assert.isTrue(i != -1, "Email must have @");
+        sellerMail = sellerMail.substring(0, i + 1) + sellerMail.substring(i + 1).toLowerCase();
+        seller.setMail(sellerMail);
         Assert.hasText(sellerMail, "Email must not be empty.");
         Assert.isTrue(sellerMail.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-z]{2,6}$"), "Email is not in a valid format.");
         
