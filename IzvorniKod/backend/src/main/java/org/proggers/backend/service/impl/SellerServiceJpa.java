@@ -42,7 +42,7 @@ public class SellerServiceJpa implements SellerService {
 
         String sellerMail = seller.getMail();
         Assert.hasText(sellerMail, "Email must not be empty.");
-        Assert.isTrue(sellerMail.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[A-Z]{2,6}$"), "Email is not in a valid format.");
+        Assert.isTrue(sellerMail.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-z]{2,6}$"), "Email is not in a valid format.");
         
         Assert.notNull(seller.getTelephone(), "Telephone can't be null.");
         Assert.isTrue(seller.getTelephone().matches("^(\\+\\d{1,4})?\\d{1,4}?[\\s]?\\d{3,4}[\\s]?\\d{3,4}[\\s]?(\\d{3,4}[\\s])?$"), "Telephone is not valid.");
