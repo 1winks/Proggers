@@ -1,4 +1,4 @@
-package org.proggers.backend.rest;
+package org.proggers.backend.dto;
 
 public class LoginUserDTO {
     private String name;
