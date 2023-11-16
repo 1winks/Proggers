@@ -4,7 +4,9 @@
 \usepackage[table]{xcolor}
 \usepackage{hhline}
 \usepackage{booktabs}
-\begin{document}
+\begin{document}[h]
+	\centering
+	\vspace{1cm}
 	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{ponuditelj}} \\
@@ -19,6 +21,9 @@
 		\hline
 		brojTelefona & INT & Način kontaktiranja\\
 		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{knjige}} \\
 		\bottomrule[2pt]
@@ -38,7 +43,7 @@
 		\hline
 		brojIzdanja & INT & Broj izdanja\\
 		\hline
-		stanjaOcuvanosti & VARCHAR & Stanje očuvanosti\\
+		stanjeOcuvanosti & VARCHAR & Stanje očuvanosti\\
 		\hline
 		tekstniOpis & VARCHAR & Sadržaj knjige\\
 		\hline
@@ -48,6 +53,9 @@
 		\hline
 		izdavac & VARCHAR & Naziv izdavača\\
 		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{listaPonuda}} \\
 		\bottomrule[2pt]
@@ -57,11 +65,17 @@
 		\hline
 		cijenaKnjige & FLOAT & Cijena knjige\\
 		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{zahtjev}} \\
 		\bottomrule[2pt]
 		\cellcolor{blue!10}id & INT &Koristi za identifikaciju knjige\\
 		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{ponuditi}} \\
 		\bottomrule[2pt]
@@ -69,25 +83,42 @@
 		\hline
 		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{dostupni}} \\
 		\bottomrule[2pt]
 		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{izdavac}} \\
 		\bottomrule[2pt]
 		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{antikvarijat}} \\
 		\bottomrule[2pt]
 		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 		\hline
 		\multicolumn{3}{|c|}{\textbf{preprodavac}} \\
 		\bottomrule[2pt]
 		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 		\hline
 	\end{tabular}
+	
+	
+	
+	
 \end{document}
+
