@@ -25,7 +25,7 @@ public class UserDetailsServiceJpa implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         if (username.equals("admin")) {
-            new User(
+            return new User(
                     "admin",
                     adminPasswordHash,
                     commaSeparatedStringToAuthorityList("ROLE_ADMIN")
