@@ -1,7 +1,7 @@
-import search from "../images/search.png"
-import bookList from "../images/bookList.png"
-import map from "../images/map.jpg"
-import option4 from "../images/option4.png"
+import search from "../../images/search.png"
+import bookList from "../../images/bookList.png"
+import map from "../../images/map.jpg"
+import option4 from "../../images/option4.png"
 
 
 const cardsInfo = [

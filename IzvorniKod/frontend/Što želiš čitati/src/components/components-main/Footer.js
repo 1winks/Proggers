@@ -1,5 +1,4 @@
 import React from "react"
-import izbornik from "../images/izbornik.png"
 
 function Footer() {
     return (
