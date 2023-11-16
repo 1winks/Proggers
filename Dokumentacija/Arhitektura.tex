@@ -31,10 +31,7 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 \item \textbf{Controller} – poveznica između model i view komponenata. Prihvaća zahtjeve poslane od strane korisnika te određuje kako odgovoriti na njih. Te informacije prosljeđuje modelu. Kad od modela dobije odgovor, rezultat obrade vraća korisniku putem view komponente. Podatci koje controller dobiva od korisnika mogu biti klikovi na gumbe, poslani obrasci i sl.
 
 \item \textbf{View} – odnosi se na front end stranu aplikacije. To su dijelovi aplikacije koje korisnik vidi i s kojima izravno komunicira. View pribavlja podatke od modela te ih prikazuje na zaslonu računala na način razumljiv čovjeku. To su HTML, CSS datoteke i JS skripte na strani klijenta. 
-\end{itemize}
-
-		
-
+\end{itemize}		
 				
 		\section{Baza podataka}
 			
@@ -53,16 +50,116 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec = {|X[6,1]|X[6,1]|X[20,1]},
 						rowhead = 1,
-					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
-					\hline \SetCell[c=3]{c}{\textbf{korisnik - ime tablice}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}IDKorisnik & INT	&  	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  	\\ \hline
-					korisnickoIme	& VARCHAR &   	\\ \hline 
-					email & VARCHAR &   \\ \hline 
-					ime & VARCHAR	&  		\\ \hline 
-					\SetCell{LightBlue} primjer	& VARCHAR &   	\\ \hline 
+					}
+					\hline \SetCell[c=3]{c}{\textbf{ponuditelj}  \\ \hline[3pt]
+					\hline
+					\multicolumn{3}{|c|}{\textbf{ponuditelj}} \\
+					\bottomrule[2pt]					\cellcolor{green!25}korisnickoIme & VARCHAR &Skup znakova koji se koriste za prepoznavanje i pristup\\
+					\hline
+					lozinka & VARCHAR & Lozinka se koristi u kombinaciji s korisničkim imenom\\
+					\hline
+					e-posta & VARCHAR & Način kontaktiranja\\
+					\hline
+					adresa & VARCHAR & Podatci o mjestu na kojem ponuditelj radi\\
+					\hline
+					brojTelefona & INT & Način kontaktiranja\\
+					\hline
+					\hline
 				\end{longtblr}
+				
+				\begin{longtblr}{ |p{4cm}|p{3cm}|p{5cm}|  }
+				\hline
+				\multicolumn{3}{|c|}{\textbf{ponuditelj}} \\
+				\bottomrule[2pt]
+				\cellcolor{green!25}korisnickoIme & VARCHAR &Skup znakova koji se koriste za prepoznavanje i pristup\\
+				\hline
+				lozinka & VARCHAR & Lozinka se koristi u kombinaciji s korisničkim imenom\\
+				\hline
+				e-posta & VARCHAR & Način kontaktiranja\\
+				\hline
+				adresa & VARCHAR & Podatci o mjestu na kojem ponuditelj radi\\
+				\hline
+				brojTelefona & INT & Način kontaktiranja\\
+				\hline
+				\hline
+				\end{longtblr}
+					
+					
+					
+					
+					
+					\multicolumn{3}{|c|}{\textbf{knjige}} \\
+					\bottomrule[2pt]
+					\cellcolor{green!25}id & INT &Koristi za identifikaciju knjige\\
+					\hline
+					naziv & VARCHAR & Naslov knjige\\
+					\hline
+					autor & VARCHAR & Autor knjige\\
+					\hline
+					godinaIzdanja & INT & Godina izdanja\\
+					\hline
+					kategorijaIzdavaca & ENUM & Postoji dvije kategorije izdavača: domaći,strani\\
+					\hline
+					zanr & VARCHAR & Oblik književnog djela\\
+					\hline
+					ISBN & INT & Medunarodni standardni književni broj jedinstveni je identifikator knjiga\\
+					\hline
+					brojIzdanja & INT & Broj izdanja\\
+					\hline
+					stanjaOcuvanosti & VARCHAR & Stanje očuvanosti\\
+					\hline
+					tekstniOpis & VARCHAR & Sadržaj knjige\\
+					\hline
+					slikaKorica & IMAGE & Slika korica knjige\\
+					\hline
+					oznakaVrsteKnjige & ENUM & Oznaka vrste knjige može biti: strani-jezik, hrvatski-jezik-dobavljiva, hrvatski-jezik-nedobavljiva, srodni-jezik-nedobavljiva, srodni-jezik-dobavljiva\\
+					\hline
+					izdavac & VARCHAR & Naziv izdavača\\
+					\hline
+					\hline
+					\multicolumn{3}{|c|}{\textbf{listaPonuda}} \\
+					\bottomrule[2pt]
+					\cellcolor{blue!10}id & INT & Koristi za identifikaciju knjige\\
+					\hline
+					brojDostupnihPrimjeraka & INT & Trenutni broj dostupnih primjeraka od odredenog ponuditelja\\
+					\hline
+					cijenaKnjige & FLOAT & Cijena knjige\\
+					\hline
+					\hline
+					\multicolumn{3}{|c|}{\textbf{zahtjev}} \\
+					\bottomrule[2pt]
+					\cellcolor{blue!10}id & INT &Koristi za identifikaciju knjige\\
+					\hline
+					\hline
+					\multicolumn{3}{|c|}{\textbf{ponuditi}} \\
+					\bottomrule[2pt]
+					\cellcolor{blue!10}id & INT & Koristi za identifikaciju knjige\\
+					\hline
+					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+					\hline
+					\hline
+					\multicolumn{3}{|c|}{\textbf{dostupni}} \\
+					\bottomrule[2pt]
+					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+					\hline
+					\hline
+					\multicolumn{3}{|c|}{\textbf{izdavac}} \\
+					\bottomrule[2pt]
+					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+					\hline
+					\hline
+					\multicolumn{3}{|c|}{\textbf{antikvarijat}} \\
+					\bottomrule[2pt]
+					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+					\hline
+					\hline
+					\multicolumn{3}{|c|}{\textbf{preprodavac}} \\
+					\bottomrule[2pt]
+					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+					\hline
+				\end{tabular}
 				
 				
 			
