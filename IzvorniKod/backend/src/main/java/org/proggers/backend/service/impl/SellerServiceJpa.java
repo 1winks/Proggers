@@ -2,12 +2,14 @@ package org.proggers.backend.service.impl;
 
 import org.proggers.backend.dao.SellerRepository;
 import org.proggers.backend.domain.Seller;
+import org.proggers.backend.service.RequestDeniedException;
 import org.proggers.backend.service.SellerService;
 import org.proggers.backend.domain.Seller.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import javax.naming.Name;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +28,9 @@ public class SellerServiceJpa implements SellerService {
         Assert.notNull(seller, "Seller object can't be null.");
 
         Assert.isNull(seller.getId(), "Seller id must be null.");
+
+        Assert.notNull(seller.getName(), "Seller must have a name.");
+        Assert.hasText(seller.getName(), "Seller must have a name.");
 
         Type sellerType = seller.getType();
         Assert.notNull(seller.getType(), "Seller type can't be null.");
@@ -50,6 +55,21 @@ public class SellerServiceJpa implements SellerService {
         
         Assert.notNull(seller.getTelephone(), "Telephone can't be null.");
         Assert.isTrue(seller.getTelephone().matches("^(\\+\\d{1,4})?\\d{1,4}?[\\s]?\\d{3,4}[\\s]?\\d{3,4}[\\s]?(\\d{3,4}[\\s])?$"), "Telephone is not valid.");
+
+        if(sellerRepo.countByMail(seller.getMail())>0)
+            throw new RequestDeniedException(
+                    "Seller with email: " + seller.getMail() + " already exists"
+            );
+
+        if(sellerRepo.countByName(seller.getName())>0)
+            throw new RequestDeniedException(
+                    "Seller with name: " + seller.getName() + " already exists"
+            );
+
+        if(sellerRepo.countByTelephone(seller.getTelephone())>0)
+            throw new RequestDeniedException(
+                    "Seller with telephone: " + seller.getTelephone() + " already exists"
+            );
 
         return sellerRepo.save(seller);
     }
