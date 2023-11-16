@@ -38,6 +38,9 @@ public class SellerServiceJpa implements SellerService {
         String sellerCountry = seller.getCountry();
         Assert.hasText(sellerCountry, "Seller country can't be empty.");
 
+        String sellerAddress = seller.getAddress();
+        Assert.hasText(sellerAddress, "Seller address can't be empty.");
+
         if (sellerType == Type.PUBLISHER) {
             Assert.isTrue(sellerCountry.equals("Croatia"), "Antiquarian must be from Croatia.");
         } else if (sellerType == Type.RESELLER) {
@@ -76,8 +79,14 @@ public class SellerServiceJpa implements SellerService {
 
     @Override
     public boolean checkSeller(String name, String password) {
-        // TODO: nadopuniti ovo nakon što je napravljena lozinka
-
+        // TODO: odkomentirati nakon sto se password napravi
+/*
+        if(sellerRepo.findByNameAndPassword(name, password)>0) {
+            return true;
+            // logiraj se
+        }
+*/
         return false;
+        // vrati ga na obrazac
     }
 }
