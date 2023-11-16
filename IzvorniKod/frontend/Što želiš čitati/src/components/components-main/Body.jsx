@@ -1,6 +1,6 @@
 import React from "react"
-import Card from "./Card.js"
-import cardsInfo from "./cardsInfo.js"
+import Card from "./Card.jsx"
+import cardsInfo from "./cardsInfo.jsx"
 
 function Body() {
 
