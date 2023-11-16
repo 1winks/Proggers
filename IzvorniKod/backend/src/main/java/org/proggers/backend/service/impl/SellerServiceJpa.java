@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 import javax.naming.Name;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class SellerServiceJpa implements SellerService {
@@ -34,17 +35,18 @@ public class SellerServiceJpa implements SellerService {
         Type sellerType = seller.getType();
         Assert.notNull(seller.getType(), "Seller type can't be null.");
 
-        String sellerCountry = seller.getCountry();
-        Assert.hasText(sellerCountry, "Seller country can't be empty.");
+        String sellerCountryCode = seller.getCountry();
+        Assert.hasText(sellerCountryCode, "Seller country can't be empty.");
+        Assert.isTrue(Arrays.asList(Locale.getISOCountries()).contains(sellerCountryCode), "Seller country is not valid.");
 
         String sellerAddress = seller.getAddress();
         Assert.hasText(sellerAddress, "Seller address can't be empty.");
 
         if (sellerType == Type.PUBLISHER) {
-            Assert.isTrue(sellerCountry.equals("Croatia"), "Antiquarian must be from Croatia.");
+            Assert.isTrue(sellerCountryCode.equals("HR"), "Antiquarian must be from Croatia.");
         } else if (sellerType == Type.RESELLER) {
-            List<String> relatedCountries = Arrays.asList("Croatia", "Slovenia", "Serbia", "Bosnia and Herzegovina", "Montenegro");
-            Assert.isTrue(relatedCountries.contains(sellerCountry), "Reseller must be from Croatia or countries with a related language.");
+            List<String> relatedCountriesCodes = Arrays.asList("HR", "SI", "RS", "BA", "ME"); //Hrvatska, Slovenija, Srbija, Bosna i Hercegovina, Crna Gora
+            Assert.isTrue(relatedCountriesCodes.contains(sellerCountryCode), "Reseller must be from Croatia or countries with a related language.");
         }
         
         String sellerMail = seller.getMail();
