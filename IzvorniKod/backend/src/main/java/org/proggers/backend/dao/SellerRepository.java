@@ -13,12 +13,7 @@ public interface SellerRepository extends JpaRepository<Seller, Long> {
 
     int countByTelephone(String telephone);
 
-    /*
-
-    @Query("SELECT count(*) FROM Seller g WHERE :n=g.name AND :p = g.password")
-    int findByNameAndPassword(@Param("n") String name, @Param("p") String password);
-    // TODO: odkomentirati nakon sto se password napravi
-
-*/
+    @Query("SELECT g FROM Seller g WHERE g.name=:n")
+    Seller findByName(@Param("n") String name);
 
 }

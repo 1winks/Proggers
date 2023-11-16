@@ -79,14 +79,13 @@ public class SellerServiceJpa implements SellerService {
 
     @Override
     public boolean checkSeller(String name, String password) {
-        // TODO: odkomentirati nakon sto se password napravi
-/*
-        if(sellerRepo.findByNameAndPassword(name, password)>0) {
+        // TODO: odkomentirati nakon sto se password napravi, getter je potreban
+        Seller seller = sellerRepo.findByName(name);
+        /*
+        if(seller.getPassword().equals(password)) {
             return true;
-            // logiraj se
         }
-*/
+        */
         return false;
-        // vrati ga na obrazac
     }
 }
