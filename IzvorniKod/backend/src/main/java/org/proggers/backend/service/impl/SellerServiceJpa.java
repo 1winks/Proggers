@@ -73,4 +73,11 @@ public class SellerServiceJpa implements SellerService {
 
         return sellerRepo.save(seller);
     }
+
+    @Override
+    public boolean checkSeller(String name, String password) {
+        // TODO: nadopuniti ovo nakon što je napravljena lozinka
+
+        return false;
+    }
 }

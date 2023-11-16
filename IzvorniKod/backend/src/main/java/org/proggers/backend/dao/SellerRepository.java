@@ -11,5 +11,4 @@ public interface SellerRepository extends JpaRepository<Seller, Long> {
 
     int countByTelephone(String telephone);
 
-
 }

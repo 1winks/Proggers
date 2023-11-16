@@ -23,6 +23,8 @@ import java.util.Map;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
 public class RestExceptionHandler {
+
+    // TODO: nadopuniti klasu preciznijim exception handleanjem
     @ExceptionHandler(IllegalArgumentException.class)
     protected ResponseEntity<?> handleIllegalArgument(Exception e, WebRequest req) {
         Map<String, String> props = new HashMap<>();

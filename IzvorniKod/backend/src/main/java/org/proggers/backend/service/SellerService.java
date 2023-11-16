@@ -13,4 +13,6 @@ public interface SellerService {
 //    List<Seller> list(Seller.Type type);
 
     Seller createSeller(Seller seller);
+
+    boolean checkSeller(String name, String password);
 }
