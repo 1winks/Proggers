@@ -70,7 +70,7 @@ const Signup = () => {
                 <button type="sumbit" className="submit">Sign Up</button>
             </form>
             <div className="submit-container">
-                <div className="change">Već imaš korisnički račun? <Link to="/login" className="redirect">Kliknite ovdje!</Link></div>
+                <div className="change">Već imaš korisnički račun? <a href="/" className="redirect">Kliknite ovdje!</a></div>
             </div>
         </div>
 
