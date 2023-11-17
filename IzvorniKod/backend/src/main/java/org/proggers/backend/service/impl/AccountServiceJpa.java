@@ -7,6 +7,7 @@ import org.proggers.backend.domain.Seller;
 import org.proggers.backend.dto.RegistrationUserDTO;
 import org.proggers.backend.service.AccountService;
 import org.proggers.backend.service.RequestDeniedException;
+import org.proggers.backend.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,14 +22,20 @@ public class AccountServiceJpa implements AccountService {
     private AccountRepository accountRepo;
 
     @Autowired
-    private SellerRepository sellerRepo;
+    private PasswordEncoder pswdEncoder;
 
     @Autowired
-    private PasswordEncoder pswdEncoder;
+    private SellerService sellerService;
 
     @Override
     public List<Account> list() {
         return accountRepo.findAll();
+    }
+
+    public Account createAccount (RegistrationUserDTO regData) {
+        // TODO: Assertions
+        Account account = new Account(regData);
+        return accountRepo.save(account);
     }
 
     @Override
@@ -41,12 +48,11 @@ public class AccountServiceJpa implements AccountService {
 
         regData.setPassword(pswdEncoder.encode(password));
 
-        Account account = new Account(regData);
-        Seller seller = new Seller(regData);
+        Account account = createAccount(regData);
+        Seller seller = sellerService.createSeller(regData);
 
         account.setSeller(seller);
 
-        sellerRepo.save(seller);
         return accountRepo.save(account);
     }
 
@@ -71,7 +77,7 @@ public class AccountServiceJpa implements AccountService {
     public boolean remove(String username) {
         // TODO: Assert checks
         accountRepo.removeAccountByUsername(username);
-        sellerRepo.removeSellerByName(username);
+        sellerService.remove(username);
         return true;
     }
 }

@@ -2,6 +2,8 @@ package org.proggers.backend.service.impl;
 
 import org.proggers.backend.dao.SellerRepository;
 import org.proggers.backend.domain.Seller;
+import org.proggers.backend.dto.RegistrationUserDTO;
+import org.proggers.backend.rest.SellerController;
 import org.proggers.backend.service.RequestDeniedException;
 import org.proggers.backend.service.SellerService;
 import org.proggers.backend.domain.Seller.Type;
@@ -24,7 +26,11 @@ public class SellerServiceJpa implements SellerService {
     }
 
     @Override
-    public Seller createSeller(Seller seller) {
+    public Seller createSeller(RegistrationUserDTO regData) {
+        Assert.notNull(regData, "Registration data can't be null.");
+
+        Seller seller = new Seller(regData);
+
         Assert.notNull(seller, "Seller object can't be null.");
 
         Assert.isNull(seller.getId(), "Seller id must be null.");
@@ -76,5 +82,11 @@ public class SellerServiceJpa implements SellerService {
             );
 
         return sellerRepo.save(seller);
+    }
+
+    @Override
+    public void remove(String username) {
+        // TODO: Assertions
+        sellerRepo.removeSellerByName(username);
     }
 }

@@ -45,6 +45,7 @@ public class Seller {
         this.name = regData.getName();
         this.country = regData.getCountry();
         this.address = regData.getAddress();
+        this.telephone = regData.getTelephone();
         this.type = regData.getType();
     }
 

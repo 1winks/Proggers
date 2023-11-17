@@ -18,9 +18,4 @@ public class SellerController {
         return sellerService.list();
     }
 
-    @PostMapping("/create")
-    public Seller createSeller(@RequestBody Seller seller) {
-        return sellerService.createSeller(seller);
-    }
-
 }

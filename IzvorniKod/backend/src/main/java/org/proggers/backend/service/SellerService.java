@@ -1,6 +1,7 @@
 package org.proggers.backend.service;
 
 import org.proggers.backend.domain.Seller;
+import org.proggers.backend.dto.RegistrationUserDTO;
 
 import java.util.List;
 
@@ -10,7 +11,10 @@ import java.util.List;
  */
 public interface SellerService {
     List<Seller> list();
+
 //    List<Seller> list(Seller.Type type);
 
-    Seller createSeller(Seller seller);
+    Seller createSeller(RegistrationUserDTO seller);
+
+    void remove(String username);
 }
