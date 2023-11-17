@@ -115,7 +115,7 @@ const Signup = () => {
                         </label>
                     </div>
                 </div>
-                <button type="sumbit" className="submit">Sign Up</button>
+                <button type="submit" className="submit">Sign Up</button>
             </form>
             <div className="submit-container">
                 <div className="change">Već imaš korisnički račun? <a href="/" className="redirect">Kliknite ovdje!</a></div>
