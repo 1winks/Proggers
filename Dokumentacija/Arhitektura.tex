@@ -170,11 +170,24 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 			
 		\section{Dijagram razreda}
 		
-			\textit{Potrebno je priložiti dijagram razreda s pripadajućim opisom. Zbog preglednosti je moguće dijagram razlomiti na više njih, ali moraju biti grupirani prema sličnim razinama apstrakcije i srodnim funkcionalnostima.}\\
+			\begin{figure}[H]
+				\includegraphics[scale=0.4]{slike/DijagramRazreda-OdnosKomponenti.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\centering
+				\caption{Dijagram razreda - odnos komponenti}
+				\label{fig:DijRaz - odnos}
+			\end{figure}
 			
-			\textbf{\textit{dio 1. revizije}}\\
+			Slika \ref{fig:DijRaz - odnos} prikazuje tok obrade HTTP zahtjeva od frontenda do baze podataka. Razred AccountController prima HTTP zahtjev poslan od strane frontenda, korisnika. Kako bi dogovorio na njih uspostavlja komunikaciju s Razredom AccountServiceJpa. Razred AccountServiceJpa zatim uspostavlja kontakt s AccountService koji zatim obavlja poslove vezane za korisnički račun. Isto tako Razred AccountServiceJpa uspostavlja komunikaciju s AccountRepository koji služi kao sučelje za pohranu I dohvat podatka iz baze.  Isto tako postoji za Seller i Book. Imaju svoje Controllere za komunikaciju HTTP. Koji onda uspostavljaju komunikaciju sa SellerServiceJpa za Seller i BookServiceJpa za Book. Te Book i Seller imaju isto svaki svoj Repository koji služe za pohranu i dohvat podataka iz baze.
 			
-			\textit{Prilikom prve predaje projekta, potrebno je priložiti potpuno razrađen dijagram razreda vezan uz \textbf{generičku funkcionalnost} sustava. Ostale funkcionalnosti trebaju biti idejno razrađene u dijagramu sa sljedećim komponentama: nazivi razreda, nazivi metoda i vrste pristupa metodama (npr. javni, zaštićeni), nazivi atributa razreda, veze i odnosi između razreda.}\\
+			\begin{figure}[H]
+				\includegraphics[scale=0.4]{slike/DijagramRazreda-RepozitorijiServisi.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\centering
+				\caption{Dijagram razreda - repozitoriji i servisi}
+				\label{fig:DijRaz - RepServ}
+			\end{figure}
+			
+			Slika \ref{fig:DijRaz - RepServ} prikazuje razrede koji predstavljaju modele preslikane relacije baze podataka. Razred Account predstavlja registriranog korisnika. Razred Seller predstavlja vrstu registriranog korisnika koji ima 3 tipa: PUBLISHER, ANTIQUARIAN i RESELLER.  Razred Publisher je tip Sellera koji isto ima 2 tipa: LOCAL i FOREIGN. Razred Offer predstavlja objavljeni oglas. Razred Book predstavlja knjigu koja se objavljuje u oglasu te Razred Edition koji sadržava ograničenja za Razred Book i bitne kriterije za Offer.
+		
 			
 			\textbf{\textit{dio 2. revizije}}\\			
 			
