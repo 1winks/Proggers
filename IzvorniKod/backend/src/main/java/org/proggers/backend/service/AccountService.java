@@ -13,4 +13,6 @@ public interface AccountService {
     Account register(RegistrationUserDTO regData);
 
     boolean authenticate(String username);
+
+    boolean remove(String username);
 }

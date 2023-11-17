@@ -19,13 +19,18 @@ public class AccountController {
     }
 
     @PostMapping("/register")
-    public Account createAccount(@RequestBody RegistrationUserDTO regData) {
+    public Account registerAccount(@RequestBody RegistrationUserDTO regData) {
         return accountService.register(regData);
     }
 
     @PostMapping("/auth")
     public boolean authenticateAccount(@RequestBody String username) {
         return accountService.authenticate(username);
+    }
+
+    @PostMapping("/remove")
+    public boolean removeAccount (@RequestBody String username) {
+        return accountService.remove(username);
     }
 
 }

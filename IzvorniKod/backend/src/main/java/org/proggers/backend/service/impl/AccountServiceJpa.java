@@ -66,4 +66,12 @@ public class AccountServiceJpa implements AccountService {
 
         return false;
     }
+
+    @Override
+    public boolean remove(String username) {
+        // TODO: Assert checks
+        accountRepo.removeAccountByUsername(username);
+        sellerRepo.removeSellerByName(username);
+        return true;
+    }
 }
