@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+\usepackage{hhline}
+\usepackage{booktabs}
+\begin{document}[h]
+	\centering
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{ponuditelj}} \\
+		\bottomrule[2pt]
+		\cellcolor{green!25}korisnickoIme & VARCHAR &Skup znakova koji se koriste za prepoznavanje i pristup\\
+		\hline
+		lozinka & VARCHAR & Lozinka se koristi u kombinaciji s korisničkim imenom\\
+		\hline
+		e-posta & VARCHAR & Način kontaktiranja\\
+		\hline
+		adresa & VARCHAR & Podatci o mjestu na kojem ponuditelj radi\\
+		\hline
+		brojTelefona & INT & Način kontaktiranja\\
+		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{knjige}} \\
+		\bottomrule[2pt]
+		\cellcolor{green!25}id & INT &Koristi za identifikaciju knjige\\
+		\hline
+		naziv & VARCHAR & Naslov knjige\\
+		\hline
+		autor & VARCHAR & Autor knjige\\
+		\hline
+		godinaIzdanja & INT & Godina izdanja\\
+		\hline
+		kategorijaIzdavaca & ENUM & Postoji dvije kategorije izdavača: domaći,strani\\
+		\hline
+		zanr & VARCHAR & Oblik književnog djela\\
+		\hline
+		ISBN & INT & Medunarodni standardni književni broj jedinstveni je identifikator knjiga\\
+		\hline
+		brojIzdanja & INT & Broj izdanja\\
+		\hline
+		stanjeOcuvanosti & VARCHAR & Stanje očuvanosti\\
+		\hline
+		tekstniOpis & VARCHAR & Sadržaj knjige\\
+		\hline
+		slikaKorica & IMAGE & Slika korica knjige\\
+		\hline
+		oznakaVrsteKnjige & ENUM & Oznaka vrste knjige može biti: strani-jezik, hrvatski-jezik-dobavljiva, hrvatski-jezik-nedobavljiva, srodni-jezik-nedobavljiva, srodni-jezik-dobavljiva\\
+		\hline
+		izdavac & VARCHAR & Naziv izdavača\\
+		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{listaPonuda}} \\
+		\bottomrule[2pt]
+		\cellcolor{blue!10}id & INT & Koristi za identifikaciju knjige\\
+		\hline
+		brojDostupnihPrimjeraka & INT & Trenutni broj dostupnih primjeraka od odredenog ponuditelja\\
+		\hline
+		cijenaKnjige & FLOAT & Cijena knjige\\
+		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{zahtjev}} \\
+		\bottomrule[2pt]
+		\cellcolor{blue!10}id & INT &Koristi za identifikaciju knjige\\
+		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{ponuditi}} \\
+		\bottomrule[2pt]
+		\cellcolor{blue!10}id & INT & Koristi za identifikaciju knjige\\
+		\hline
+		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{dostupni}} \\
+		\bottomrule[2pt]
+		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{izdavac}} \\
+		\bottomrule[2pt]
+		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{antikvarijat}} \\
+		\bottomrule[2pt]
+		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+		\hline
+	\end{tabular}
+	\vspace{1cm}
+	\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
+		\hline
+		\multicolumn{3}{|c|}{\textbf{preprodavac}} \\
+		\bottomrule[2pt]
+		\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
+		\hline
+	\end{tabular}
+	
+	
+	
+	
+\end{document}
+
