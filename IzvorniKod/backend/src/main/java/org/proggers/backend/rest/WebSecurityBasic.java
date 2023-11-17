@@ -25,7 +25,7 @@ public class WebSecurityBasic {
     public SecurityFilterChain securityFilterChain (HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                    .requestMatchers(mvc.pattern("/"), mvc.pattern("/home")).permitAll()
+                    .requestMatchers(mvc.pattern("/**"), mvc.pattern("/home")).permitAll()
                     .requestMatchers(mvc.pattern("/admin/*")).hasAuthority("ROLE_ADMIN")
                     .anyRequest().authenticated()
                 )

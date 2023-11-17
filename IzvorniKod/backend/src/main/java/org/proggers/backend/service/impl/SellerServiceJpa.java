@@ -77,16 +77,4 @@ public class SellerServiceJpa implements SellerService {
 
         return sellerRepo.save(seller);
     }
-
-    @Override
-    public boolean checkSeller(String name, String password) {
-        // TODO: odkomentirati nakon sto se password napravi, getter je potreban
-        Seller seller = sellerRepo.findByName(name);
-        /*
-        if(seller.getPassword().equals(password)) {
-            return true;
-        }
-        */
-        return false;
-    }
 }
