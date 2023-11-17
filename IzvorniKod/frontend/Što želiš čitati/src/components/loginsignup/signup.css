@@ -40,6 +40,7 @@ form{
     border-radius: 7px;
     font-size: 20px;
 }
+
 .submit-container{
     display: flex;
     flex-direction: column;
@@ -78,3 +79,23 @@ form{
     width: 20px;
     height: 20px;
 }
+
+
+
+.option-container{
+    display: flex;
+    flex-direction: column;
+}
+.option-radio{
+    margin-left: -250px;
+    margin-right: -100px;
+    margin-top: 3px;
+    margin-bottom: 0px;
+}
+
+input[type="radio"] {
+    -ms-transform: scale(0.7);
+    -webkit-transform: scale(0.7); 
+    transform: scale(0.7);
+}
+

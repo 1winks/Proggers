@@ -11,8 +11,10 @@ const Signup = () => {
         username:'',
         email:'',
         address:'',
+        country:'',
         phone:'',
-        password:''
+        password:'',
+        selectedOption:''
     });
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const handleChange = (e) => {
@@ -24,6 +26,11 @@ const Signup = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+		
+		if (!formData.selectedOption) {
+            console.error('Molim odaberite jednu opciju');
+            return;
+        }
     
         try {
           await axios.post('http://example.com:3000/signup', formData);
@@ -53,6 +60,10 @@ const Signup = () => {
                     <label htmlFor="address">Adresa</label>
                     <input type="text" id="address" name="address" onChange={handleChange} />
                 </div>
+				<div className="input">
+                    <label htmlFor="country">Država</label>
+                    <input type="text" id="country" name="country" onChange={handleChange} />
+                </div>
                 <div className="input">
                     <label htmlFor="phone">Telefon</label>
                     <input type="text" id="phone" name="phone" onChange={handleChange}/>
@@ -66,6 +77,43 @@ const Signup = () => {
                         onClick={handleToggleVisibility}
                         className="toggle"
                     />
+                </div>
+				<div className="input">
+                    <div className="option-container">
+                        <label className="options">
+                            <input
+                                type="radio"
+                                name="selectedOption"
+                                value={"izdavac"}
+                                checked={formData.selectedOption === 'izdavac'}
+                                onChange={handleChange}
+                                className="option-radio"
+                            />
+                            izdavač
+                        </label>
+                        <label className="options">
+                            <input
+                                type="radio"
+                                name="selectedOption"
+                                value={"antikvarijat"}
+                                checked={formData.selectedOption === 'antikvarijat'}
+                                onChange={handleChange}
+                                className="option-radio"
+                            />
+                            antikvarijat
+                        </label>
+                        <label className="options">
+                            <input
+                                type="radio"
+                                name="selectedOption"
+                                value={"preprodavac"}
+                                checked={formData.selectedOption === 'preprodavac'}
+                                onChange={handleChange}
+                                className="option-radio"
+                            />
+                            preprodavač
+                        </label>
+                    </div>
                 </div>
                 <button type="sumbit" className="submit">Sign Up</button>
             </form>
