@@ -38,7 +38,7 @@ public class Seller {
     )
     private Publisher publisher;
 
-    private Seller() {};
+    public Seller() {};
 
     public Long getId() {
         return id;

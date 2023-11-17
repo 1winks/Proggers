@@ -23,7 +23,7 @@ public class Account {
     @OneToOne(optional = true)
     private Seller seller;
 
-    private Account () {}
+    public Account () {}
 
     public Long getId() {
         return id;
