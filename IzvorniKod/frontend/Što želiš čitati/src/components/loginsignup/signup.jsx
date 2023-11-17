@@ -8,12 +8,12 @@ import hidden from '../../images/hidden.png';
 const Signup = () => {
 
     const [formData,setFormData]=useState({
-        username:'',
-        email:'',
+        name:'',
+        mail:'',
+        telephone:'',
         address:'',
         country:'',
-        phone:'',
-        password:'',
+        type:'',
         selectedOption:''
     });
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -26,8 +26,8 @@ const Signup = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-		
-		if (!formData.selectedOption) {
+
+        if (!formData.selectedOption) {
             console.error('Molim odaberite jednu opciju');
             return;
         }
@@ -49,28 +49,33 @@ const Signup = () => {
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="input">
-                    <label htmlFor="username">Korisničko ime</label>
-                    <input type="text" id="username" name="username" onChange={handleChange} />
+                    <label htmlFor="name">Korisničko ime</label>
+                    <input type="text" id="name" name="name" onChange={handleChange} />
                 </div>
                 <div className="input">
-                    <label htmlFor="email">E-mail</label>
-                    <input type="email" id="email" name="email" onChange={handleChange} />
+                    <label htmlFor="mail">E-mail</label>
+                    <input type="mail" id="mail" name="mail" onChange={handleChange} />
                 </div>
                 <div className="input">
                     <label htmlFor="address">Adresa</label>
                     <input type="text" id="address" name="address" onChange={handleChange} />
                 </div>
-				<div className="input">
+                <div className="input">
                     <label htmlFor="country">Država</label>
                     <input type="text" id="country" name="country" onChange={handleChange} />
                 </div>
                 <div className="input">
-                    <label htmlFor="phone">Telefon</label>
-                    <input type="text" id="phone" name="phone" onChange={handleChange}/>
+                    <label htmlFor="telephone">Telefon</label>
+                    <input type="text" id="telephone" name="telephone" onChange={handleChange}/>
                 </div>
                 <div className="input">
                     <label htmlFor="password">Lozinka</label>
-                    <input type={isPasswordVisible ? 'text' : 'password'} id="password" name="password" onChange={handleChange} />
+                    <input 
+                        type={isPasswordVisible ? 'text' : 'password'} 
+                        id="password" 
+                        name="password" 
+                        onChange={handleChange} 
+                    />
                     <img
                         src={isPasswordVisible?hidden:visible} 
                         alt={isPasswordVisible?'hidden':'visible'} 
@@ -78,7 +83,7 @@ const Signup = () => {
                         className="toggle"
                     />
                 </div>
-				<div className="input">
+                <div className="input">
                     <div className="option-container">
                         <label className="options">
                             <input
