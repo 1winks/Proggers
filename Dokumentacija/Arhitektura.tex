@@ -37,26 +37,17 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 			
 			\textbf{\textit{dio 1. revizije}}\\
 			
-		\textit{Potrebno je opisati koju vrstu i implementaciju baze podataka ste odabrali, glavne komponente od kojih se sastoji i slično.}
+			\textit{Potrebno je opisati koju vrstu i implementaciju baze podataka ste odabrali, glavne komponente od kojih se sastoji i slično.}
 		
 			\subsection{Opis tablica}
 			
-
-				\textit{Svaku tablicu je potrebno opisati po zadanom predlošku. Lijevo se nalazi točno ime varijable u bazi podataka, u sredini se nalazi tip podataka, a desno se nalazi opis varijable. Svjetlozelenom bojom označite primarni ključ. Svjetlo plavom označite strani ključ}
-				
-				
-				\begin{longtblr}[
-					label=none,
-					entry=none
-					]{
-						width = \textwidth,
-						colspec = {|X[6,1]|X[6,1]|X[20,1]},
-						rowhead = 1,
-					}
-					\hline \SetCell[c=3]{c}{\textbf{ponuditelj}  \\ \hline[3pt]
+			\begin{center}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
 					\multicolumn{3}{|c|}{\textbf{ponuditelj}} \\
-					\bottomrule[2pt]					\cellcolor{green!25}korisnickoIme & VARCHAR &Skup znakova koji se koriste za prepoznavanje i pristup\\
+					\bottomrule[2pt]
+					\cellcolor{green!25}korisnickoIme & VARCHAR &Skup znakova koji se koriste za prepoznavanje i pristup\\
 					\hline
 					lozinka & VARCHAR & Lozinka se koristi u kombinaciji s korisničkim imenom\\
 					\hline
@@ -66,30 +57,10 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 					\hline
 					brojTelefona & INT & Način kontaktiranja\\
 					\hline
+				\end{tabular}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
-				\end{longtblr}
-				
-				\begin{longtblr}{ |p{4cm}|p{3cm}|p{5cm}|  }
-				\hline
-				\multicolumn{3}{|c|}{\textbf{ponuditelj}} \\
-				\bottomrule[2pt]
-				\cellcolor{green!25}korisnickoIme & VARCHAR &Skup znakova koji se koriste za prepoznavanje i pristup\\
-				\hline
-				lozinka & VARCHAR & Lozinka se koristi u kombinaciji s korisničkim imenom\\
-				\hline
-				e-posta & VARCHAR & Način kontaktiranja\\
-				\hline
-				adresa & VARCHAR & Podatci o mjestu na kojem ponuditelj radi\\
-				\hline
-				brojTelefona & INT & Način kontaktiranja\\
-				\hline
-				\hline
-				\end{longtblr}
-					
-					
-					
-					
-					
 					\multicolumn{3}{|c|}{\textbf{knjige}} \\
 					\bottomrule[2pt]
 					\cellcolor{green!25}id & INT &Koristi za identifikaciju knjige\\
@@ -108,7 +79,7 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 					\hline
 					brojIzdanja & INT & Broj izdanja\\
 					\hline
-					stanjaOcuvanosti & VARCHAR & Stanje očuvanosti\\
+					stanjeOcuvanosti & VARCHAR & Stanje očuvanosti\\
 					\hline
 					tekstniOpis & VARCHAR & Sadržaj knjige\\
 					\hline
@@ -118,6 +89,9 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 					\hline
 					izdavac & VARCHAR & Naziv izdavača\\
 					\hline
+				\end{tabular}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
 					\multicolumn{3}{|c|}{\textbf{listaPonuda}} \\
 					\bottomrule[2pt]
@@ -127,11 +101,17 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 					\hline
 					cijenaKnjige & FLOAT & Cijena knjige\\
 					\hline
+				\end{tabular}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
 					\multicolumn{3}{|c|}{\textbf{zahtjev}} \\
 					\bottomrule[2pt]
 					\cellcolor{blue!10}id & INT &Koristi za identifikaciju knjige\\
 					\hline
+				\end{tabular}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
 					\multicolumn{3}{|c|}{\textbf{ponuditi}} \\
 					\bottomrule[2pt]
@@ -139,32 +119,51 @@ Arhitektura sustava temeljit će se na MVC konceptu (model-controller-view). Ova
 					\hline
 					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 					\hline
+				\end{tabular}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
 					\multicolumn{3}{|c|}{\textbf{dostupni}} \\
 					\bottomrule[2pt]
 					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 					\hline
+				\end{tabular}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
 					\multicolumn{3}{|c|}{\textbf{izdavac}} \\
 					\bottomrule[2pt]
 					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 					\hline
+				\end{tabular}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
 					\multicolumn{3}{|c|}{\textbf{antikvarijat}} \\
 					\bottomrule[2pt]
 					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 					\hline
+				\end{tabular}
+				\vspace{1cm}
+				\begin{tabular}{ |p{4cm}|p{3cm}|p{5cm}|  }
 					\hline
 					\multicolumn{3}{|c|}{\textbf{preprodavac}} \\
 					\bottomrule[2pt]
 					\cellcolor{blue!10}korisnickoIme & VARCHAR & Skup znakova koji se koriste za prepoznavanje i pristup\\
 					\hline
 				\end{tabular}
-				
+			\end{center}	
+			
 				
 			
 			\subsection{Dijagram baze podataka}
-				\textit{ U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".}
+			
+				\begin{figure}[H]
+					\includegraphics[scale=0.35]{slike/4.1.2 er_dijagram.PNG} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+					\centering
+					\caption{ER dijagram}
+					\label{fig:ER dijagram}
+				\end{figure}
 			
 			\eject
 			

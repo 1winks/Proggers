@@ -380,6 +380,58 @@
 	
 \end{enumerate}
 
+\subsubsection{Dijagrami obrazaca uporabe}
+
+	\begin{figure}[H]
+	\includegraphics[scale=0.5]{slike/dijagramObrascaUporabe.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+	\centering
+	\caption{Dijagram obrasca uporabe}
+	\label{fig:Dijagram obrasca uporabe}
+	\end{figure}
+	
+\eject	
+
+\subsection{Sekvencijski dijagrami}
+
+	\textbf{Obrazac uporabe UC1 - Pretraživanje knjige na karti}
+	
+	Neregistrirani korisnik šalje zahtjev za ulazak u aplikaciju koja učitava mapu. Neregistrirani korisnik šalje zahtjev za podacima o ponuditelju na kojeg klikne, poslužitelj iz baze podataka dohvaća sve knjige tog ponuditelja te ih vraća ponuditelju.
+
+	\begin{figure}[H]
+	\includegraphics[scale=0.4]{slike/sekvencijskiDijagramPretrazivanjeKnjigeNaKarti.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+	\centering
+	\caption{Sekvencijski dijagram za UC1}
+	\label{fig:Sekvencijski dijagam za UC1}
+	\end{figure}
+
+\eject	
+
+\textbf{Obrazac uporabe UC2-3 - Registracija i prijava u sustav}
+
+Neregistrirani korisnik šalje zahtjev za registracijom u aplikaciju. Poslužitelj vraća formu za registraciju. Neregistrirani korisnik upisuje podatke, poslužitelj šalje podatke na provjeru pomoću baze podataka. Ako su podaci neispravni, ponavlja se postupak upisa podataka, ako nisu, poslužitelj šalje poruku o ispravnosti. Ako se registrirani korisnik prijavljuje, sve je isto, samo nakon provjere i ako su podaci točni, omogućuje ulaz u sustav registriranih korisnika.
+
+\begin{figure}[H]
+	\includegraphics[scale=0.3]{slike/registracijaIPrijava.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+	\centering
+	\caption{Sekvencijski dijagram za UC2-3}
+	\label{fig:Sekvencijski dijagam za UC2-3}
+\end{figure}
+
+\eject	
+
+\textbf{Obrazac uporabe UC4-5 - Pretraživanje knjige po značajkama knjige i nazivu ponuditelja}
+
+Neregistrirani korisnik šalje zahtjev za pretraživanjem po značajkama, poslužitelj mu vraća formu za unos. Provjeravaju se uneseni podaci te ako nisu ispravni, daje se nova forma za ispunjavanje, a ako jesu, vraćaju se knjige sa tim značajkama. Ista stvar se događa sa pretraživanjem po nazivu ponuditelja, samo se ovdje vraćaju knjige na ponuditeljevom popisu. 
+
+\begin{figure}[H]
+	\includegraphics[scale=0.3]{slike/sekvencijskiDijagramPretrazivanjeKnjigePoZnacajkama.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+	\centering
+	\caption{Sekvencijski dijagram za UC4-5}
+	\label{fig:Sekvencijski dijagam za UC4-5}
+\end{figure}
+
+\eject	
+
 \section{Ostali zahtjevi}
 \begin{itemize}
 	\item Sustav treba podržavati rad više korisnika u stvarnom vremenu
