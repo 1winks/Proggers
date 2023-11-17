@@ -56,7 +56,7 @@ const Login = () => {
             </div>
             <div className="submit-container">
                 <div className="submit" onClick={handleLogin}>Login</div>
-                <div className="change">Još nemaš profil? <a href="/signup" className="redirect">Kliknite ovdje!</a> |  <a href="/app" className="redirect">GUEST LOGIN</a></div>
+                <div className="change">Još nemaš profil? <a href="/signup" className="redirect">Kliknite ovdje!</a> |  <a href="/main" className="redirect">GUEST LOGIN</a></div>
             </div>
         </div>
 
