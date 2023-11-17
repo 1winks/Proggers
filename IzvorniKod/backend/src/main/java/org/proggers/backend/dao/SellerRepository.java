@@ -16,4 +16,6 @@ public interface SellerRepository extends JpaRepository<Seller, Long> {
     @Query("SELECT g FROM Seller g WHERE g.name=:n")
     Seller findByName(@Param("n") String name);
 
+    void removeSellerByName(String name);
+
 }

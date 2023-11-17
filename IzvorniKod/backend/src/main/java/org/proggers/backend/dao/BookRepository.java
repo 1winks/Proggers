@@ -13,4 +13,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     int countByDescription(String description);
     int countByGenre(String genre);
 
+    void removeBookByTitleAndAuthor(String title, String author);
+
 }

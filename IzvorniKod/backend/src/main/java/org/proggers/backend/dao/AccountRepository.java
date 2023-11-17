@@ -14,4 +14,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 //    Set<Account> getUnauthorizedAccounts ();
 
     Optional<Account> findByUsername (String username);
+
+    void removeAccountByUsername(String username);
 }
