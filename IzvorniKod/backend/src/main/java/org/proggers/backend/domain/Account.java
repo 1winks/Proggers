@@ -10,7 +10,10 @@ public class Account {
     @Column(unique = true)
     private String username;
 
-    // TODO: Salt and hash with BCrypt
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Column(nullable = false)
     private String password;
 

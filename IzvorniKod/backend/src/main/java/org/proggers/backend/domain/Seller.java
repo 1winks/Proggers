@@ -38,8 +38,6 @@ public class Seller {
     )
     private Publisher publisher;
 
-    // TODO: Password field
-
     private Seller() {};
 
     public Long getId() {
