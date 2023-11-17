@@ -41,4 +41,8 @@ public class Account {
     public Seller getSeller() {
         return seller;
     }
+
+    public void authorize() {
+        authorized = true;
+    }
 }
