@@ -1,8 +1,7 @@
 package org.proggers.backend.rest;
 
 import org.proggers.backend.domain.Account;
-import org.proggers.backend.domain.Book;
-import org.proggers.backend.dto.LoginUserDTO;
+import org.proggers.backend.dto.RegistrationUserDTO;
 import org.proggers.backend.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,14 +18,14 @@ public class AccountController {
         return accountService.list();
     }
 
-    @PostMapping("/create")
-    public Account createAccount(@RequestBody Account account) {
-        return accountService.createAccount(account);
+    @PostMapping("/register")
+    public Account createAccount(@RequestBody RegistrationUserDTO regData) {
+        return accountService.register(regData);
     }
 
-    @PostMapping("/authenticate")
+    @PostMapping("/auth")
     public boolean authenticateAccount(@RequestBody String username) {
-        return accountService.authenticateAccount(username);
+        return accountService.authenticate(username);
     }
 
 }

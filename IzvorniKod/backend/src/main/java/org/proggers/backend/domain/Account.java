@@ -1,6 +1,7 @@
 package org.proggers.backend.domain;
 
 import jakarta.persistence.*;
+import org.proggers.backend.dto.RegistrationUserDTO;
 
 @Entity
 public class Account {
@@ -23,7 +24,13 @@ public class Account {
     @OneToOne(optional = true)
     private Seller seller;
 
-    public Account () {}
+    private Account () {}
+
+    public Account (RegistrationUserDTO regData) {
+        this.username = regData.getName();
+        this.password = regData.getPassword();
+        this.authorized = false;
+    }
 
     public Long getId() {
         return id;
@@ -43,6 +50,10 @@ public class Account {
 
     public Seller getSeller() {
         return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 
     public void authorize() {

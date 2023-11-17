@@ -2,6 +2,7 @@ package org.proggers.backend.service;
 
 
 import org.proggers.backend.domain.Account;
+import org.proggers.backend.dto.RegistrationUserDTO;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface AccountService {
 
     List<Account> list();
 
-    Account createAccount(Account account);
+    Account register(RegistrationUserDTO regData);
 
-    boolean authenticateAccount(String username);
+    boolean authenticate(String username);
 }

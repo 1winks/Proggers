@@ -1,6 +1,7 @@
 package org.proggers.backend.domain;
 
 import jakarta.persistence.*;
+import org.proggers.backend.dto.RegistrationUserDTO;
 
 import java.util.Set;
 
@@ -38,7 +39,14 @@ public class Seller {
     )
     private Publisher publisher;
 
-    public Seller() {};
+    private Seller () {}
+    public Seller(RegistrationUserDTO regData) {
+        this.mail = regData.getMail();
+        this.name = regData.getName();
+        this.country = regData.getCountry();
+        this.address = regData.getAddress();
+        this.type = regData.getType();
+    }
 
     public Long getId() {
         return id;
