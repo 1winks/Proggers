@@ -33,7 +33,7 @@ const Signup = () => {
         }
     
         try {
-          await axios.post('http://example.com:3000/signup', formData);
+          await axios.post('https://sto-zelis-citati.onrender.com/accounts/register', formData);
 
           console.log('User registered successfully');
         } catch (error) {
