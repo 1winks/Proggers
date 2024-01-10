@@ -4,9 +4,9 @@ import cardsInfo from "./cardsInfo.jsx"
 
 function Body() {
 
-const cards = cardsInfo.map(card => <Card key={card.id} name={card.name} image={card.imagesrc} />
-    
-)
+    const cards = cardsInfo.map(card => <Card key={card.id} name={card.name} image={card.imagesrc} href={card.href} />
+
+    )
 
     return (
         <div className="bodyMain">

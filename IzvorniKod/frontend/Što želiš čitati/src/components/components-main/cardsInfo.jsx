@@ -8,22 +8,26 @@ const cardsInfo = [
     {
         id: 1,
         name: "Pretraživanje",
-        imagesrc: search
+        imagesrc: search,
+        href: "/search"
     },
     {
         id: 2,
         name: "Lista knjiga",
-        imagesrc: bookList
+        imagesrc: bookList,
+        href: "/booklist"
     },
     {
         id: 3,
         name: "Pretraživanje na karti",
-        imagesrc: map
+        imagesrc: map,
+        href: "/mapsearch"
     },
     {
         id: 4,
         name: "Opcija 4",
-        imagesrc: option4
+        imagesrc: option4,
+        href: "/nes"
     },
 ];
 
