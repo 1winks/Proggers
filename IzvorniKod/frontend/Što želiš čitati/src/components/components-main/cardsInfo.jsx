@@ -1,29 +1,33 @@
 import search from "../../images/search.png"
 import bookList from "../../images/bookList.png"
 import map from "../../images/map.jpg"
-import option4 from "../../images/option4.png"
+import plus from "../../images/plus.jpg"
 
 
 const cardsInfo = [
     {
         id: 1,
         name: "Pretraživanje",
-        imagesrc: search
+        imagesrc: search,
+        href: "/searchbooks"
     },
     {
         id: 2,
         name: "Lista knjiga",
-        imagesrc: bookList
+        imagesrc: bookList,
+        href: "/booklist"
     },
     {
         id: 3,
         name: "Pretraživanje na karti",
-        imagesrc: map
+        imagesrc: map,
+        href: "/search"
     },
     {
         id: 4,
-        name: "Opcija 4",
-        imagesrc: option4
+        name: "Dodaj Knjigu",
+        imagesrc: plus,
+        href: "/addbook"
     },
 ];
 

@@ -1,0 +1,83 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+#naslov {
+    color: rgba(73, 13, 13, 0.61);
+    font-size: 38px;
+    font-weight: 800;
+}
+
+#naslovKontejner {
+    text-align: center;
+    margin-bottom: 5vh;
+    margin-top: 5px;
+}
+
+#submitajknjigu {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    color: white;
+    background:rgba(165, 42, 42, 0.566);
+    border-radius: 45px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-style: none;
+    margin-bottom: 20px;
+}
+
+#type {
+    height: 45px;
+    width: 350px;
+    background-color: rgb(224, 219, 219);
+    border-radius: 7px;
+    font-size: 20px;
+}
+
+#description {
+    background-color: rgb(224, 219, 219);
+    border-radius: 7px;
+    resize: none;
+}
+
+#publisherCategory {
+    height: 45px;
+    width: 350px;
+    background-color: rgb(224, 219, 219);
+    border-radius: 7px;
+    font-size: 20px;
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;  
+    align-items: center;
+}
+
+.inputAddBook{
+    display: flex;
+    flex-direction: column;
+    margin: auto;  
+    position: relative;
+    align-items: flex-start;
+}
+.inputAddBook label{
+    margin: 10px 5px;
+    font-weight: bold;
+}
+.inputAddBook input{
+    height: 45px;
+    width: 350px;
+    background-color: rgb(224, 219, 219);
+    border-radius: 7px;
+    font-size: 20px;
+}
+
