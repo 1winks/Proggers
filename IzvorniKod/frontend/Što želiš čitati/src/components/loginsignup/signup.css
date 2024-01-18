@@ -28,6 +28,7 @@ form{
     flex-direction: column;
     margin: auto;  
     position: relative;
+    align-items: flex-start;
 }
 .input label{
     margin: 10px 5px;
@@ -58,7 +59,7 @@ form{
     background:rgba(165, 42, 42, 0.566);
     border-radius: 45px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
     border-style: none;
 }
 .change{
@@ -85,12 +86,14 @@ form{
 .option-container{
     display: flex;
     flex-direction: column;
+    margin-left: -280px;  
+}
+.options {
+    display: flex;
+    align-items:center;
 }
 .option-radio{
-    margin-left: -250px;
-    margin-right: -100px;
-    margin-top: 3px;
-    margin-bottom: 0px;
+    margin-right: -50px;
 }
 
 input[type="radio"] {
@@ -99,3 +102,12 @@ input[type="radio"] {
     transform: scale(0.7);
 }
 
+.error-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 5px;
+    font-weight: bold;
+    color: tomato;
+    font-size: 22px;
+}
