@@ -9,13 +9,13 @@ const cardsInfo = [
         id: 1,
         name: "Pretraživanje",
         imagesrc: search,
-        href: "/search"
+        href: "/booklist"
     },
     {
         id: 2,
         name: "Lista knjiga",
         imagesrc: bookList,
-        href: "/booklist"
+        href: "/bookListNS"
     },
     {
         id: 3,
