@@ -12,12 +12,13 @@ const Signup = () => {
 
     const [formData,setFormData]=useState({
         name:'',
-        mail:'',
-        telephone:'',
-        address:'',
-        country:'',
-        password:'',
-        selectedOption:''
+		username:'',
+        email:'',
+        //telephone:'',
+        //address:'',
+        //country:'',
+        password:''
+        //selectedOption:''
     });
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [registrationSuccess, setRegistrationSuccess] = useState(false);
@@ -34,12 +35,13 @@ const Signup = () => {
 
         if (
             !formData.name ||
-            !formData.mail ||
-            !formData.telephone ||
-            !formData.address ||
-            !formData.country ||
-            !formData.password ||
-            !formData.selectedOption
+			!formData.username ||
+            !formData.email ||
+            //!formData.telephone ||
+            //!formData.address ||
+            //!formData.country ||
+            !formData.password 
+            //!formData.selectedOption
         ) {
             setRegistrationError('Molim Vas da popunite sva polja !');
             return;
@@ -63,20 +65,24 @@ const Signup = () => {
 
     return (
         <div className="container">
-            <div className="header">
+            <div className="header-reg">
                 <div className="text">Registracija</div>
             </div>
             {registrationError && <div className="error-message">{registrationError}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="input">
-                    <label htmlFor="name">Korisničko ime</label>
+                    <label htmlFor="name">Ime</label>
                     <input type="text" id="name" name="name" onChange={handleChange} />
                 </div>
-                <div className="input">
-                    <label htmlFor="mail">E-mail</label>
-                    <input type="email" id="mail" name="mail" onChange={handleChange} />
+				<div className="input">
+                    <label htmlFor="username">Korisničko ime</label>
+                    <input type="text" id="username" name="username" onChange={handleChange} />
                 </div>
                 <div className="input">
+                    <label htmlFor="email">E-mail</label>
+                    <input type="email" id="email" name="email" onChange={handleChange} />
+                </div>
+                {/*<div className="input">
                     <label htmlFor="address">Adresa</label>
                     <input type="text" id="address" name="address" onChange={handleChange} />
                 </div>
@@ -87,7 +93,7 @@ const Signup = () => {
                 <div className="input">
                     <label htmlFor="telephone">Telefon</label>
                     <input type="tel" id="telephone" name="telephone" onChange={handleChange}/>
-                </div>
+                </div>*/}
                 <div className="input">
                     <label htmlFor="password">Lozinka</label>
                     <input 
@@ -103,7 +109,7 @@ const Signup = () => {
                         className="toggle"
                     />
                 </div>
-                <div className="input">
+                {/*<div className="input">
                     <div className="option-container">
                         <label className="options">
                             <input
@@ -139,7 +145,7 @@ const Signup = () => {
                             preprodavač
                         </label>
                     </div>
-                </div>
+                </div>*/}
                 <button type="submit" className="submit">Sign Up</button>
             </form>
             <div className="submit-container">

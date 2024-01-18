@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './login.css'
 import knjiga from '../../images/book.png'
 import { Link } from "react-router-dom";
-//import axios from "axios";
+import axios from "axios";
 import visible from '../../images/visible.png';
 import hidden from '../../images/hidden.png';
 
@@ -11,19 +11,26 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-/*     const handleLogin = async () => {
+    const [error, setError] = useState(null); 
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
         try {
-            const response = await axios.post('http://your-api-endpoint/login', {
+            const response = await axios.post('http://localhost:8080/api/auth/signin', {
                 username: username,
                 password: password
             });
 
-            console.log(response.data); 
+            console.log(response.data);
+
 
         } catch (error) {
             console.error("Login failed", error);
+            setError("Prijava nije uspjela. Molimo provjerite svoje podatke.");
         }
-    }; */
+    };
+
     const handleToggleVisibility = () => {
         setIsPasswordVisible(!isPasswordVisible);
     };
@@ -35,15 +42,17 @@ const Login = () => {
                 <div className="text">Prijava</div>
             </div>
 
-            <form className="form-signin" method="post" action="/login">
+            {error && <div className="error-message">{error}</div>}
+
+            <form className="form-signin" method="post" onSubmit={handleLogin}>
                 <div className="input">
                     <label htmlFor="username">Korisničko ime</label>
                     <input type="text" 
-                    value={username} 
-                    id="username" 
-                    name="username"
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+                        value={username} 
+                        id="username" 
+                        name="username"
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
                 </div>
                 <div className="input">
                     <label htmlFor="password" className="sr-only">Lozinka</label>
@@ -54,7 +63,6 @@ const Login = () => {
                         className="password-input"
                         id="password" 
                         name="password"
-                        class="form-control"
                     />
                     <img
                         src={isPasswordVisible?hidden:visible} 
@@ -65,7 +73,8 @@ const Login = () => {
                 </div>
                 <div className="submit-container">
                     <button type="submit" className="submit">Login</button>
-                    <div className="change">Još nemaš profil? <a href="/signup" className="redirect">Kliknite ovdje!</a> |  <a href="/main" className="redirect">GUEST LOGIN</a></div>
+					{/*<div className="change">Još nemaš profil? <Link to="/signup" className="redirect">Kliknite ovdje!</Link> |  <Link to="/" className="redirect">GUEST LOGIN</Link></div>*/}
+                    <div className="change">Još nemaš profil?<a href="/signup" className="redirect">Kliknite ovdje!</a> |  <a href="/main" className="redirect">GUEST LOGIN</a></div>
                 </div>
             </form>
             
