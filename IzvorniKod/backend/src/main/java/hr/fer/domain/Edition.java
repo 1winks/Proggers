@@ -1,10 +1,12 @@
 package hr.fer.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -14,73 +16,34 @@ import java.util.Set;
 @Entity
 @Table(name = "edition", schema = "public")
 public class Edition {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ISBN;
 
     public enum Type {
-        /**
-         * Knjiga na stranom jeziku
-         */
         FOREIGN,
-        /**
-         * Knjiga izdana na hrvatskom jeziku
-         */
         TRANSLATED,
-        /**
-         * Knjiga izdana na srodnom jeziku
-         */
         RELATED;
     }
 
-    @Enumerated(EnumType.STRING) @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Type type;
 
-    /**
-     * Knjiga se moze dobaviti na podrucju Hrvatske
-     */
     @Column(nullable = false)
     private Boolean locallyPurchasable;
 
-    /**
-     * Godina Izdanja
-     */
     @Column(nullable = false)
     private long releaseYear;
 
-    @OneToMany(mappedBy = "edition")
-    private Set<Offer> offers;
+    @JsonIgnore
+    @OneToMany(mappedBy = "edition", cascade = CascadeType.ALL)
+    private Set<BookEdition> bookEditions = new HashSet<>();
 
-    @ManyToOne @JoinColumn(name = "book-id")
-    private Book book;
+    @OneToMany(mappedBy = "edition", cascade = CascadeType.ALL)
+    private Set<EditionOffer> editionOffers = new HashSet<>();
 
-    @ManyToOne @JoinColumn(name = "publisher-id")
-    private Publisher publisher;
+    @JsonIgnore
+    @OneToMany(mappedBy = "edition", cascade = CascadeType.ALL)
+    private Set<SellerEdition> sellerEditions = new HashSet<>();
 
-    public long getISBN() {
-        return ISBN;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public Boolean isLocallyPurchasable() {
-        return locallyPurchasable;
-    }
-
-    public long getReleaseYear() {
-        return releaseYear;
-    }
-
-    public Set<Offer> getOffers() {
-        return offers;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public Publisher getPublisher() {
-        return publisher;
-    }
 }

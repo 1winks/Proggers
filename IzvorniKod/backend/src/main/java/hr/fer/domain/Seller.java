@@ -1,11 +1,13 @@
 package hr.fer.domain;
 
+import hr.fer.entity.auth.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -15,7 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "seller", schema = "public")
 public class Seller {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public enum Type {
@@ -33,65 +35,12 @@ public class Seller {
     @Column(nullable = false)
     private String address, country;
 
-    @OneToMany(mappedBy = "seller")
-    private Set<Offer> offers;
+    @OneToOne(mappedBy = "seller")
+    private User user;
 
-    @OneToOne(cascade = CascadeType.ALL) @JoinTable(
-            name = "jt-seller-publisher",
-            joinColumns = {
-                    @JoinColumn(name = "seller-id", referencedColumnName = "id")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "publisher-id", referencedColumnName = "id")
-            }
-    )
-    private Publisher publisher;
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
+    private Set<OfferSeller> offerSellers = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
+    private Set<SellerEdition> sellerEditions = new HashSet<>();
 }

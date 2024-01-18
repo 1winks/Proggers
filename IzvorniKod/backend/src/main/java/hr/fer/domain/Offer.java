@@ -1,11 +1,14 @@
 package hr.fer.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +17,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "offer", schema = "public")
 public class Offer {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 
     public enum State {
@@ -22,47 +25,18 @@ public class Offer {
         USED;
     }
 
-    /**
-     * Stanje ocuvanja primjeraka
-     */
     @Enumerated(EnumType.STRING)
     private State state;
 
-    /**
-     * Broj primjeraka na prodaji
-     */
     @Column(nullable = false)
     private long copies;
 
-    /**
-     * Prodavac ponude
-     */
-    @ManyToOne @JoinColumn(name = "seller-id")
-    private Seller seller;
+    @JsonIgnore
+    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL)
+    private Set<EditionOffer> editionOffers = new HashSet<>();
 
-    /**
-     * Izdanje knjige koje se prodaje.
-     */
-    @ManyToOne @JoinColumn(name = "edition-id")
-    private Edition edition;
+    @JsonIgnore
+    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL)
+    private Set<OfferSeller> offerSellers = new HashSet<>();
 
-    public long getId() {
-        return id;
-    }
-
-    public State getState() {
-        return state;
-    }
-
-    public long getCopies() {
-        return copies;
-    }
-
-    public Seller getSeller() {
-        return seller;
-    }
-
-    public Edition getEdition() {
-        return edition;
-    }
 }

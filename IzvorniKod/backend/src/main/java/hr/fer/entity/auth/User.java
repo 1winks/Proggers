@@ -1,5 +1,6 @@
 package hr.fer.entity.auth;
 
+import hr.fer.domain.Seller;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -20,5 +21,8 @@ public class User{
     private String username;
     private String email;
     private String password;
-    
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "seller_id", referencedColumnName = "id")
+    private Seller seller;
 }
