@@ -12,7 +12,7 @@ const Signup = () => {
 
     const [formData,setFormData]=useState({
         name:'',
-		username:'',
+	username:'',
         email:'',
         //telephone:'',
         //address:'',
@@ -35,7 +35,7 @@ const Signup = () => {
 
         if (
             !formData.name ||
-			!formData.username ||
+	    !formData.username ||
             !formData.email ||
             //!formData.telephone ||
             //!formData.address ||
@@ -53,8 +53,8 @@ const Signup = () => {
           setRegistrationSuccess(true);
 		  
           {/*navigate('/login');*/}
-		  //preskoci na stranicu login
-		  window.location.href = "/";
+	  //preskoci na stranicu login
+	  window.location.href = "/";
 
         } catch (error) {
           console.error('Registration failed', error);
@@ -149,7 +149,7 @@ const Signup = () => {
                 <button type="submit" className="submit">Sign Up</button>
             </form>
             <div className="submit-container">
-				{/*<div className="change">Već imaš korisnički račun? <Link to="/login" className="redirect">Kliknite ovdje!</Link></div>*/}
+		{/*<div className="change">Već imaš korisnički račun? <Link to="/login" className="redirect">Kliknite ovdje!</Link></div>*/}
                 <div className="change">Već imaš korisnički račun? <a href="/" className="redirect">Kliknite ovdje!</Link></div>
             </div>
             
