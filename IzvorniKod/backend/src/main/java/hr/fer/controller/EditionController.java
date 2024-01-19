@@ -17,13 +17,13 @@ public class EditionController {
     @Autowired
     private EditionService editionService;
 
-    @PostMapping("/add")
-    public Edition addEdition (@RequestBody EditionDTO editionDTO) {
-        return editionService.addEdition(editionDTO);
-    }
-
     @GetMapping("")
     public List<Edition> listEditions() {
         return editionService.list();
+    }
+
+    @PostMapping("/add")
+    public Edition addEdition (@RequestBody EditionDTO editionDTO) {
+        return editionService.addEdition(editionDTO);
     }
 }
