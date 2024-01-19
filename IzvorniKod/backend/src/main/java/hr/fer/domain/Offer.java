@@ -1,6 +1,7 @@
 package hr.fer.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import hr.fer.dto.OfferDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,11 @@ public class Offer {
     public enum State {
         NEW,
         USED;
+    }
+
+    public Offer (OfferDTO dto) {
+        this.copies = dto.getCopies();
+        this.state = dto.getState();
     }
 
     @Enumerated(EnumType.STRING)

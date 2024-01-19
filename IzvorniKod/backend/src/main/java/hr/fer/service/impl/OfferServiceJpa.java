@@ -13,6 +13,7 @@ import hr.fer.repository.SellerRepository;
 import hr.fer.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.HashSet;
 import java.util.List;
@@ -37,7 +38,7 @@ public class OfferServiceJpa implements OfferService {
 
         Assert.notNull(seller, "Offer must have valid seller.");
 
-        OfferSeller offerSeller = new OfferSeller(offer, seller)
+        OfferSeller offerSeller = new OfferSeller(offer, seller);
 
         offer.link(offerSeller);
         seller.link(offerSeller);
