@@ -43,21 +43,12 @@ public class EditionServiceJpa implements EditionService {
 
         Assert.notNull(book, "Edition must have valid book.");
 
-        BookEdition bookEdition = new BookEdition();
         Edition edition = new Edition(editionDTO);
 
-        bookEdition.setEdition(edition);
-        bookEdition.setBook(book);
+        BookEdition bookEdition = new BookEdition(book, edition);
 
-        Set<BookEdition> bookEditions = edition.getBookEditions();
-        bookEditions.add(bookEdition);
-        edition.setBookEditions(bookEditions);
-
-        bookEditions = book.getBookEditions();
-        bookEditions.add(bookEdition);
-        book.setBookEditions(bookEditions);
-
-        // TODO: Initialize BookEdition, Link all 3 together and save. -> assertovi
+        edition.link(bookEdition);
+        book.link(bookEdition);
 
         bookRepo.save(book);
         editionRepo.save(edition);

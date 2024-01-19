@@ -18,12 +18,7 @@ public class BookServiceJpa implements BookService {
 
     @Override
     public Book createBook(BookDTO bookDTO) {
-        Book book = new Book();
-        book.setAuthor(bookDTO.getAuthor());
-        book.setCover(bookDTO.getCover());
-        book.setGenre(bookDTO.getGenre());
-        book.setDescription(bookDTO.getDescription());
-        book.setTitle(bookDTO.getTitle());
+        Book book = new Book(bookDTO);
         return bookRepo.save(book);
     }
 
