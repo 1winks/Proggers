@@ -72,7 +72,7 @@ body{
     --secondary-color: #D4B996FF;
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -80,7 +80,7 @@ body{
 
 .bookList {
     height: 100%;
-    width: 100vw;
+    width: 100%;
     background-color: var(--secondary-color);
     position: absolute;
     display: flex;
@@ -123,9 +123,10 @@ input {
 
 .bookListBody {
     background-color: var(--secondary-color);
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     display: inline-grid;
     grid-template-columns: repeat(auto-fit, minmax(5%, 20%));
     box-sizing: border-box;

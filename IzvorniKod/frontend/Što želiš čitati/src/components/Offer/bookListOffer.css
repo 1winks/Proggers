@@ -78,7 +78,7 @@ body{
     box-sizing: border-box;
 }
 
-.bookListNS {
+.bookListOffer {
     height: 100vh;
     width: 100vw;
     background-color: var(--secondary-color);
@@ -87,7 +87,7 @@ body{
     flex-direction: column;    
 }
 
-.bookListHeaderNS {
+.bookListHeaderOffer {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(../../images/bookstore.png);
     height: fit-content;
     text-align: center;
@@ -97,7 +97,7 @@ body{
     flex-direction: column;
 }
 
-.row1NS {
+.row1Offer {
     color: white;
     height: 100%;
     display: flex;
@@ -105,7 +105,7 @@ body{
     align-content:center;
 }
 
-.row2NS {
+.row2Offer {
     color: white;
     position: relative;
     margin-top: 3vh;
@@ -113,15 +113,15 @@ body{
     flex-grow: 1;
 }
 
-.row2NS h2{
+.row2Offer h2{
     font-size: 3rem;
 }
 
-inputNS {
+inputOffer {
     width: 15%;
 }
 
-.bookListBodyNS {
+.bookListBodyOffer {
     background-color: var(--secondary-color);
     height: 100vh;
     width: 100vw;
@@ -135,7 +135,7 @@ inputNS {
     justify-content: space-evenly;
 }
 
-.bookCardNS {
+.bookCardOffer {
     background-color: azure;
     border-radius: 1rem;
     padding: 0.5rem;
@@ -153,33 +153,33 @@ inputNS {
     flex-direction: column;
 }
 
-.bookCardNS:hover{
+.bookCardOffer:hover{
     transform: scale(0.9);
     background-color: rgba(255, 255, 255, 0.8);
 }
 
 
-.bookCardNS img{
+.bookCardOffer img{
     width: 80%;
     height: 80%;
     border-radius: 1rem 1rem 0 0;
 }
 
-.bookCardNS title{
+.bookCardOffer title{
     font-size: 30%;
 }
 
-.bookCardNS h3{
+.bookCardOffer h3{
     font-size:1rem;
 }
 
 @media only screen and (max-width: 1000px) {
-    .bookCardNS {
+    .bookCardOffer {
         height: 7rem;
         width: 7rem;
     }
 
-    .bookCardNS h3{
+    .bookCardOffer h3{
         font-size:0.5rem;
     }
 }

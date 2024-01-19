@@ -15,7 +15,7 @@ const cardsInfo = [
         id: 2,
         name: "Lista knjiga",
         imagesrc: bookList,
-        href: "/booklist"
+        href: "/offer"
     },
     {
         id: 3,

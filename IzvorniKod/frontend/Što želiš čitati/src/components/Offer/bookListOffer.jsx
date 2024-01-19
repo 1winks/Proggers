@@ -1,12 +1,12 @@
 import react, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import "./bookListNS.css";
+import "./bookListOffer.css";
 import { useNavigate } from "react-router-dom";
-import BookBoxNS from "./BookBoxNS";
+import BookBoxOffer from "./BookBoxOffer";
 import "../BookDetails/BookDetails.css";
 import BookDetails from "../BookDetails/BookDetails"
 
-const BookListNS = () => {
+const BookListOffer = () => {
 	const [search, setSearch] = useState("");
 	const [bookData, setData] = useState([]);
 
@@ -26,9 +26,9 @@ const BookListNS = () => {
 
 
 	return (
-		<div className="bookListNS">
-			<div className="bookListHeaderNS">
-				<div className="row1NS">
+		<div className="bookListOffer">
+			<div className="bookListHeaderOffer">
+				<div className="row1Offer">
 					<h1>&#34;A reader lives a thousand lives before he dies. The man who never reads lives only once.&#34;</h1>
 				</div>
 				{/*<div className="row2">*/}
@@ -41,13 +41,13 @@ const BookListNS = () => {
 				{/*	</div>*/}
 				{/*</div>*/}
 			</div>
-			<div className="bookListBodyNS">
+			<div className="bookListBodyOffer">
 				{
-					<BookBoxNS book={bookData}/>
+					<BookBoxOffer book={bookData}/>
 				}
 			</div>
 		</div >
 	)
 }
 
-export default BookListNS;
+export default BookListOffer;
