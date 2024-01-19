@@ -50,8 +50,11 @@ public class EditionServiceJpa implements EditionService {
         bookEdition.setBook(book);
 
         Set<BookEdition> bookEditions = edition.getBookEditions();
+        bookEditions.add(bookEdition);
         edition.setBookEditions(bookEditions);
+
         bookEditions = book.getBookEditions();
+        bookEditions.add(bookEdition);
         book.setBookEditions(bookEditions);
 
         // TODO: Initialize BookEdition, Link all 3 together and save. -> assertovi

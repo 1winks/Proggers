@@ -40,11 +40,12 @@ public class OfferServiceJpa implements OfferService {
         offerSeller.setSeller(seller);
 
         Set<OfferSeller> offerSellers = offer.getOfferSellers();
+        offerSellers.add(offerSeller);
         offer.setOfferSellers(offerSellers);
-        offerSellers = seller.getOfferSellers();
-        seller.setOfferSellers(offerSellers);
 
-        // TODO: postaviti i editione
+        offerSellers = seller.getOfferSellers();
+        offerSellers.add(offerSeller);
+        seller.setOfferSellers(offerSellers);
 
         offerSellerRepo.save(offerSeller);
         sellerRepo.save(seller);

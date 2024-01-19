@@ -39,7 +39,9 @@ public class SellerServiceJpa implements SellerService {
         seller.setUser(user);
         user.setSeller(seller);
 
-        return sellerRepo.save(seller);
+        userRepository.save(user);
+        sellerRepo.save(seller);
+        return seller;
     }
 
     @Override
