@@ -1,6 +1,7 @@
 package hr.fer.service.impl;
 
 import hr.fer.domain.Book;
+import hr.fer.dto.BookDTO;
 import hr.fer.repository.BookRepository;
 import hr.fer.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,14 @@ public class BookServiceJpa implements BookService {
     }
 
     @Override
-    public Book createBook(Book book) {
-        return null;
+    public Book createBook(BookDTO bookDTO) {
+        Book book = new Book();
+        book.setAuthor(bookDTO.getAuthor());
+        book.setCover(bookDTO.getCover());
+        book.setGenre(bookDTO.getGenre());
+        book.setDescription(bookDTO.getDescription());
+        book.setTitle(bookDTO.getTitle());
+        return bookRepo.save(book);
     }
 
     @Override

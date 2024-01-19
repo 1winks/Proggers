@@ -1,6 +1,7 @@
 package hr.fer.controller;
 
 import hr.fer.domain.Book;
+import hr.fer.dto.BookDTO;
 import hr.fer.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    public Book createBook(@RequestBody Book book) {
+    public Book createBook(@RequestBody BookDTO book) {
         return bookService.createBook(book);
     }
 }
