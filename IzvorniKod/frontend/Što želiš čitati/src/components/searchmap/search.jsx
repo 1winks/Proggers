@@ -5,6 +5,7 @@ import './search.css'
 import 'leaflet/dist/leaflet.css'; 
 import L from 'leaflet';
 import markerIcon from '../../images/location.png'
+//import { geocode } from 'nominatim-geocode';
 
 
 const Search = () => {
@@ -44,19 +45,40 @@ const Search = () => {
         }
       });
 
-      searchResults.forEach((result) => {
-        const customIcon = L.icon({
-          iconUrl: markerIcon,
-          iconSize: [32, 32], 
-          iconAnchor: [16, 32], 
-          popupAnchor: [0, -32], 
-        });
-        
-        L.marker([result.latitude, result.longitude],{ icon: customIcon })
-          .addTo(map)
-          .bindPopup(result.ponuditelj)
-          //xin
-          .on('click', () => setSelectedPonuditelj(result.ponuditelj));
+      searchResults.forEach(async (result) => {
+        try {
+          console.log('Nominatim Request:', {
+            q: result.address,
+            format: 'json',
+          });
+          console.log(result.address);
+          const searchResponse = await axios.get('https://nominatim.openstreetmap.org/search', {
+            params: {
+              q: result.address,
+              format: 'json',
+            },
+          });
+
+          if (searchResponse && searchResponse.data.length > 0) {
+            const { lat, lon } = searchResponse.data[0];
+
+            const customIcon = L.icon({
+              iconUrl: markerIcon,
+              iconSize: [32, 32],
+              iconAnchor: [16, 32],
+              popupAnchor: [0, -32],
+            });
+
+            L.marker([lat, lon], { icon: customIcon })
+              .addTo(map)
+              .bindPopup(result.ponuditelj)
+              .on('click', () => setSelectedPonuditelj(result.ponuditelj));
+          } else {
+            console.error('Nominatim returned no results.');
+          }
+        } catch (error) {
+          console.error('Error in Nominatim search:', error);
+        }
       });
 
       map.whenReady(() => {
@@ -120,7 +142,7 @@ const Search = () => {
       setBooksForSelectedPonuditelj([]);
   
     } catch (error) {
-      console.error(error);
+      console.error('Error in handleSearch:',error);
     }
   };
  

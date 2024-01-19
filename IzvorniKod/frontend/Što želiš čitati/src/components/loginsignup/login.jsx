@@ -2,40 +2,32 @@ import React, {useState} from "react";
 import './login.css'
 import knjiga from '../../images/book.png'
 import { Link } from "react-router-dom";
-//import axios from "axios";
+import axios from "axios";
 import visible from '../../images/visible.png';
 import hidden from '../../images/hidden.png';
 
 
 const Login = () => {
-    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [error, setError] = useState(null); 
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://65a2704c42ecd7d7f0a79fe1.mockapi.io/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: name, password: password })  
+            const response = await axios.post('http://localhost:8080/api/auth/signin', {
+                username: username,
+                password: password
             });
 
-            const data = await response.json();
+            console.log(response.data);
 
-            if (data.authenticated) {
-               
-                console.log("uspjesno");
-                window.location.href = '/main';
-
-            } else {
-                
-                console.error("ne uspjesno");
-            }
 
         } catch (error) {
             console.error("Login failed", error);
+            setError("Prijava nije uspjela. Molimo provjerite svoje podatke.");
         }
     };
 
@@ -50,14 +42,16 @@ const Login = () => {
                 <div className="text">Prijava</div>
             </div>
 
+            {error && <div className="error-message">{error}</div>}
+
             <form className="form-signin" method="post" onSubmit={handleLogin}>
                 <div className="input">
-                    <label htmlFor="name">Korisničko ime</label>
+                    <label htmlFor="username">Korisničko ime</label>
                     <input type="text" 
-                        value={name} 
-                        id="name" 
-                        name="name"
-                        onChange={(e) => setName(e.target.value)}
+                        value={username} 
+                        id="username" 
+                        name="username"
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
                 <div className="input">
@@ -78,8 +72,9 @@ const Login = () => {
                     />
                 </div>
                 <div className="submit-container">
-                    <button type="submit" className="submit" onClick={handleLogin}>Login</button>
-                    <div className="change">Još nemaš profil? <Link to="/signup" className="redirect">Kliknite ovdje!</Link> |  <Link to="/main" className="redirect">GUEST LOGIN</Link></div>
+                    <button type="submit" className="submit">Login</button>
+					{/*<div className="change">Još nemaš profil? <Link to="/signup" className="redirect">Kliknite ovdje!</Link> |  <Link to="/" className="redirect">GUEST LOGIN</Link></div>*/}
+                    <div className="change">Još nemaš profil?<a href="/signup" className="redirect">Kliknite ovdje!</a> |  <a href="/main" className="redirect">GUEST LOGIN</a></div>
                 </div>
             </form>
             

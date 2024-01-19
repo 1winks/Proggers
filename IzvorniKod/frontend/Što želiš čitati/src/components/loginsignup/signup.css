@@ -3,7 +3,7 @@
     flex-direction: column;
     margin: auto;
 }
-.header{
+.header-reg{
     display: flex;
     flex-direction: column;
     align-items: center;
