@@ -16,4 +16,6 @@ public interface SellerRepository extends JpaRepository<Seller, Long> {
     Seller findByName(@Param("n") String name);
 
     void removeSellerByName(String name);
+
+    Seller findByMail(String mail);
 }
