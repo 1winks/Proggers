@@ -14,6 +14,9 @@ const Search = () => {
   // eslint-disable-next-line no-unused-vars
   const [mapZoom, setMapZoom] = useState(8);
   const [mapLoaded, setMapLoaded] = useState(false);
+  //xin
+  const [selectedPonuditelj, setSelectedPonuditelj] = useState(null);
+  const [booksForSelectedPonuditelj, setBooksForSelectedPonuditelj] = useState([]);
 
   useEffect(() => {
     setMapLoaded(true);
@@ -48,9 +51,12 @@ const Search = () => {
           iconAnchor: [16, 32], 
           popupAnchor: [0, -32], 
         });
+        
         L.marker([result.latitude, result.longitude],{ icon: customIcon })
           .addTo(map)
-          .bindPopup(result.ponuditelj);
+          .bindPopup(result.ponuditelj)
+          //xin
+          .on('click', () => setSelectedPonuditelj(result.ponuditelj));
       });
 
       map.whenReady(() => {
@@ -65,8 +71,27 @@ const Search = () => {
     }
   }, [mapLoaded, mapCenter, mapZoom, searchResults]);
 
+  //xin
+  useEffect(() => {
+    const fetchBooksForPonuditelj = async () => {
+      if (selectedPonuditelj) {
+        try {
+          const response = await axios.get(`https://65a2704c42ecd7d7f0a79fe1.mockapi.io/test?ponuditelj=${selectedPonuditelj}`);
+          const books = response.data;
+          setBooksForSelectedPonuditelj(books);
+          console.log(`Ponuditelj ${selectedPonuditelj}:`, books);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
+
+    fetchBooksForPonuditelj();
+  }, [selectedPonuditelj]);
+
   const handleSearch = async () => {
     try {
+      
       const response = await axios.get('https://65a2704c42ecd7d7f0a79fe1.mockapi.io/test');
 
       const filteredResults = response.data.filter((result) => {
@@ -89,6 +114,10 @@ const Search = () => {
       console.log('Filtered Results:', filteredResults);
   
       setSearchResults(filteredResults);
+
+      //xin
+      setSelectedPonuditelj(null);
+      setBooksForSelectedPonuditelj([]);
   
     } catch (error) {
       console.error(error);
@@ -113,7 +142,18 @@ const Search = () => {
       </div>
   
       <div id="map" style={{ height: '500px', width: '80%', margin: '30px' }}></div>
-
+      {/*xin*/}
+      {selectedPonuditelj && (
+        <div>
+          <h2>{`Ponuditelj ${selectedPonuditelj}`}</h2>
+          <ul>
+            {booksForSelectedPonuditelj.map((book) => (
+              <li key={book.id}>{book.naziv}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      
 
     </div>
   );

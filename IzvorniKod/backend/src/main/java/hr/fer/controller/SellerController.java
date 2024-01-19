@@ -1,12 +1,11 @@
 package hr.fer.controller;
 
 import hr.fer.domain.Seller;
+import hr.fer.dto.SellerDTO;
 import hr.fer.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -19,6 +18,11 @@ public class SellerController {
     @GetMapping("")
     public List<Seller> listSellers() {
         return sellerService.list();
+    }
+
+    @PostMapping("add")
+    public Seller createSeller(@RequestBody SellerDTO sellerDTO) {
+        return sellerService.createSeller(sellerDTO);
     }
 
 }

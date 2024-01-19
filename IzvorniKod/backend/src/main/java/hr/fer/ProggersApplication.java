@@ -8,7 +8,7 @@ public class ProggersApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProggersApplication.class, args);
-		System.out.println("Running");
+		System.out.println("\nRunning\n");
 	}
 
 }
