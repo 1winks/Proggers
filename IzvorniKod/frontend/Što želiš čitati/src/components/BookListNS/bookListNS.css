@@ -78,8 +78,8 @@ body{
     box-sizing: border-box;
 }
 
-.bookList {
-    height: 100%;
+.bookListNS {
+    height: 100vh;
     width: 100vw;
     background-color: var(--secondary-color);
     position: absolute;
@@ -87,7 +87,7 @@ body{
     flex-direction: column;    
 }
 
-.bookListHeader {
+.bookListHeaderNS {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(../../images/bookstore.png);
     height: fit-content;
     text-align: center;
@@ -97,11 +97,15 @@ body{
     flex-direction: column;
 }
 
-.row1 {
+.row1NS {
     color: white;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content:center;
 }
 
-.row2 {
+.row2NS {
     color: white;
     position: relative;
     margin-top: 3vh;
@@ -109,19 +113,15 @@ body{
     flex-grow: 1;
 }
 
-.row2 h2{
+.row2NS h2{
     font-size: 3rem;
 }
 
-.row2 select{
-    width: 10%;
-}
-
-input {
+inputNS {
     width: 15%;
 }
 
-.bookListBody {
+.bookListBodyNS {
     background-color: var(--secondary-color);
     height: 100vh;
     width: 100vw;
@@ -135,7 +135,7 @@ input {
     justify-content: space-evenly;
 }
 
-.bookCard {
+.bookCardNS {
     background-color: azure;
     border-radius: 1rem;
     padding: 0.5rem;
@@ -153,33 +153,33 @@ input {
     flex-direction: column;
 }
 
-.bookCard:hover{
+.bookCardNS:hover{
     transform: scale(0.9);
     background-color: rgba(255, 255, 255, 0.8);
 }
 
 
-.bookCard img{
+.bookCardNS img{
     width: 80%;
     height: 80%;
     border-radius: 1rem 1rem 0 0;
 }
 
-.bookCard title{
+.bookCardNS title{
     font-size: 30%;
 }
 
-.bookCard h3{
+.bookCardNS h3{
     font-size:1rem;
 }
 
 @media only screen and (max-width: 1000px) {
-    .bookCard {
+    .bookCardNS {
         height: 7rem;
         width: 7rem;
     }
 
-    .bookCard h3{
+    .bookCardNS h3{
         font-size:0.5rem;
     }
 }

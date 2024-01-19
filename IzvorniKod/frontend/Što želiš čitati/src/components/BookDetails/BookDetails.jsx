@@ -1,114 +1,59 @@
-import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
-import Loading from "../Loader/Loader";
-import coverImg from "../../images/Unknown.png"
-import "./BookDetails.css";
-import {FaArrowLeft} from "react-icons/fa";
-import {useNavigate} from "react-router-dom";
+﻿import react from 'react';
 
-const URL = "https://openlibrary.org/works/";
 
-const BookDetails = () => {
-   const {id} = useParams();
-   const [loading, setLoading] = useState(false);
-   const [book, setBook] = useState(null)
+const BookDetails = ({show, item, onClose}) => {
+//const BookDetails = () => {
+    if(!show)
+    {
+        return null;
+    }
+    let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
+    //let tumbnail = "image";
+    return (
+        <>
+            <div className="overlay">
+                <div className="overlay-inner">
+                    <button className="close" onClick={onClose}>Zatvori</button>
+                    <div className="inner-box">
+                        <img src={thumbnail} alt="" />
+                        <div className="info">
+                            {/*<h1>Naziv</h1>*/}
+                            {/*<h3>Autori</h3>*/}
+                            {/*<h3>Oznaka vrste knjiga</h3>*/}
+                            {/*<h4>Godina izdanja</h4><br />*/}
+                            {/*<h4>Izdavac</h4><br />*/}
+                            {/*<h4>Kategorija izdavaca</h4><br />*/}
+                            {/*<h4>Zanr</h4><br />*/}
+                            {/*<h4>ISBN</h4><br />*/}
+                            {/*<h4>Broj izdanja</h4><br />*/}
+                            {/*<h4>Stanje ocuvanosti</h4><br />*/}
+                            {/*<h4>Tekstni opis</h4><br />*/}
+                            {/*<h4>Lista ponuda</h4><br />*/}
 
-   useEffect(() => {
-      setLoading(true);
-      async function getBookDetails(){
-         try{
-            const response = await fetch(`${URL}${id}.json`);
-            const data = await response.json();
+                            <h1>{item.volumeInfo.title}</h1>
+                            <h3>{item.volumeInfo.authors}</h3>
+                            <h4>{item.volumeInfo.publisher}<span>{item.volumeInfo.publishedDate}</span></h4><br />
+                            <a href={item.volumeInfo.previewLink}><button>More</button></a>
+                            <button variant='text'>Prevedi</button>
 
-            if(data){
-               const {description, title, covers, subject_places, subject_times, subjects} = data;
-               const newBook = {
-                  description: description ? description.value : "No description found",
-                  title: title,
-                  cover_img: coverImg,
-                  subject_places: subject_places ? subject_places.join(", ") : "No subject places found",
-                  subject_times: subject_times ? subject_times.join(", ") : "No subject times found",
-                  subjects: subjects ? subjects.join(", ") : "No subjects found"
-               };
-               setBook(newBook);
-            } else {
-               setBook(null)
-            }
-            setLoading(false);
-         } catch(error){
-            console.log(error);
-            setLoading(false);
-         }
-      }
-      getBookDetails();
-   }, [id]);
-
-   console.log(book);
-
-   if(loading) return <Loading />;
-
-   return (
-      <section className='book-details'>
-         <div className='container'>
-            <button type='button' className='flex flex-c back-btn'
-            onClick={() => NavigationPreloadManager("/book")}>
-               <FaArrowLeft size = {22} />
-               <span className='fs-18 fw-6'>Povratak</span>
-            </button>
-            <div className='book-details-content grid'>
-               <div className='book-details-img'>
-                  <img src = {book?.slikaKorica} alt = "cover img"/>
-               </div>
-               <div className='book-details-info'>
-                  <div className='book-details-item title'>
-                     <span className='fw-6'>Naziv:</span>
-                     <span>{book?.naziv}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>Autori:</span>
-                     <span className='fw-6 fs-24'>{book?.autori}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>Godina izdavanja: </span>
-                     <span className='text-italic'>{book?.godinaIzdanja}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>Izdavač: </span>
-                     <span className='text-italic'>{book?.izdavac}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>Kategorija izdavača: </span>
-                     <span className='text-italic'>{book?.kategorijaIzdavaca}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>Žanr: </span>
-                     <span className='text-italic'>{book?.zanr}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>ISBN: </span>
-                     <span className='text-italic'>{book?.ISBN}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>Broj izdanja: </span>
-                     <span className='text-italic'>{book?.brojIzdanja}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>Stanje očuvanosti: </span>
-                     <span className='text-italic'>{book?.stanjeOcuvanosti}</span>
-                  </div>
-                  <div className='book-details-item.description'>
-                     <span className='fw-6'>Tekstni opis: </span>
-                     <span className='text-italic'>{book?.tekstniOpis}</span>
-                  </div>
-                  <div className='book-details-item'>
-                     <span className='fw-6'>Oznaka vrste knjige: </span>
-                     <span className='text-italic'>{book?.oznakaVrsteKnjige}</span>
-                  </div>
-               </div>
+                            {/*<h1>{item.volumeInfo.title}</h1>*/}
+                            {/*<h3>{item.volumeInfo.authors}</h3>*/}
+                            {/*<h3>{item.volumeInfo.clasification}</h3>*/}
+                            {/*<h4>{item.volumeInfo.publishingYear}</h4><br />*/}
+                            {/*<h4>{item.volumeInfo.publisher}</h4><br />*/}
+                            {/*<h4>{item.volumeInfo.publisherCategory}</h4><br />*/}
+                            {/*<h4>{item.volumeInfo.genre}</h4><br />*/}
+                            {/*<h4>{item.volumeInfo.ISBN}</h4><br />*/}
+                            {/*<h4>{item.volumeInfo.issueNumber}</h4><br />*/}
+                            {/*<h4>{item.volumeInfo.preservationState}</h4><br />*/}
+                            {/*<h4>{item.volumeInfo.offerList}</h4><br />*/}
+                        </div>
+                    </div>
+                    <h4 className="description">{item.volumeInfo.description}</h4>
+                </div>
             </div>
-         </div>
-      </section>
-   )
+        </>
+    )
 }
 
-export default BookDetails
+export default BookDetails;
