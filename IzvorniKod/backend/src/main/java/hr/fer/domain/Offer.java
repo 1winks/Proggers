@@ -39,4 +39,11 @@ public class Offer {
     @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL)
     private Set<OfferSeller> offerSellers = new HashSet<>();
 
+    public void link (EditionOffer editionOffer) {
+        editionOffers.add(editionOffer);
+    }
+
+    public void link(OfferSeller offerSeller) {
+        offerSellers.add(offerSeller);
+    }
 }

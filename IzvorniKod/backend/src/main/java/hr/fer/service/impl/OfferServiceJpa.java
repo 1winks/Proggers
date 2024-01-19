@@ -29,23 +29,18 @@ public class OfferServiceJpa implements OfferService {
 
     @Override
     public Offer createOffer(OfferDTO offerDTO) {
-        Offer offer = new Offer();
-        offer.setCopies(offerDTO.getCopies());
-        offer.setState(offerDTO.getState());
+        Assert.notNull(offerDTO, "Offer DTO must not be null");
+
+        Offer offer = new Offer(offerDTO);
 
         Seller seller = sellerRepo.findByMail(offerDTO.getSellerMail());
 
-        OfferSeller offerSeller = new OfferSeller();
-        offerSeller.setOffer(offer);
-        offerSeller.setSeller(seller);
+        Assert.notNull(seller, "Offer must have valid seller.");
 
-        Set<OfferSeller> offerSellers = offer.getOfferSellers();
-        offerSellers.add(offerSeller);
-        offer.setOfferSellers(offerSellers);
+        OfferSeller offerSeller = new OfferSeller(offer, seller)
 
-        offerSellers = seller.getOfferSellers();
-        offerSellers.add(offerSeller);
-        seller.setOfferSellers(offerSellers);
+        offer.link(offerSeller);
+        seller.link(offerSeller);
 
         offerSellerRepo.save(offerSeller);
         sellerRepo.save(seller);

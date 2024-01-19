@@ -26,20 +26,11 @@ public class SellerServiceJpa implements SellerService {
 
     @Override
     public Seller createSeller(SellerDTO sellerDTO) {
-        User user = userRepository.findByEmail(sellerDTO.getMail());
 
-        Seller seller = new Seller();
-        seller.setName(sellerDTO.getName());
-        seller.setMail(sellerDTO.getMail());
-        seller.setAddress(sellerDTO.getAddress());
-        seller.setCountry(sellerDTO.getCountry());
-        seller.setTelephone(sellerDTO.getTelephone());
-        seller.setType(sellerDTO.getType());
+        Assert.notNull(sellerDTO, "Seller DTO must not be null");
 
-        seller.setUser(user);
-        user.setSeller(seller);
+        Seller seller = new Seller(sellerDTO);
 
-        userRepository.save(user);
         sellerRepo.save(seller);
         return seller;
     }
