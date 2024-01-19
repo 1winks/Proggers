@@ -42,8 +42,9 @@ public class EditionServiceJpa implements EditionService {
 
         Book book = bookService.findByTitleAuthor(editionDTO.getTitle(), editionDTO.getAuthor());
 
-        // TODO: Create book aswell
-        Assert.notNull(book, "Edition must have valid book.");
+        if (book == null) {
+            book = new Book(editionDTO);
+        }
 
         Edition edition = new Edition(editionDTO);
 
