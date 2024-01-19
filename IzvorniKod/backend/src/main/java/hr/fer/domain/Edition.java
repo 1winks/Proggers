@@ -1,6 +1,7 @@
 package hr.fer.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import hr.fer.dto.EditionDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,15 @@ public class Edition {
         RELATED;
     }
 
+    public Edition (EditionDTO dto) {
+        this.type = dto.getType();
+        this.ISBN = dto.getISBN();
+        this.type = dto.getType();
+        this.locallyPurchasable = dto.getLocallyPurchasable();
+        this.releaseYear = dto.getReleaseYear();
+    }
+
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Type type;
@@ -45,5 +55,6 @@ public class Edition {
     @JsonIgnore
     @OneToMany(mappedBy = "edition", cascade = CascadeType.ALL)
     private Set<SellerEdition> sellerEditions = new HashSet<>();
+
 
 }

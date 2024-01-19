@@ -19,4 +19,15 @@ public class BookServiceJpa implements BookService {
     public Book createBook(Book book) {
         return null;
     }
+
+    @Override
+    public Book findByTitleAuthor(String title, String author) {
+        List<Book> books = bookRepo.findByTitleAndAuthor(title, author);
+
+        if (books == null || books.isEmpty()) {
+            return null;
+        }
+
+        return books.get(0);
+    }
 }
