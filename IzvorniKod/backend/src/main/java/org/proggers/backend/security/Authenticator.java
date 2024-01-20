@@ -27,7 +27,7 @@ public class Authenticator {
             return Jwts.parserBuilder()
                     .setSigningKey(KEY)
                     .build()
-                    .parseClaimsJwt(token)
+                    .parseClaimsJws(token)
                     .getBody()
                     .getSubject();
         } catch (Exception e) {

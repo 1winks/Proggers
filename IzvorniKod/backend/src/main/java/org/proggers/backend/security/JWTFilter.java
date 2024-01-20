@@ -31,11 +31,15 @@ public class JWTFilter extends OncePerRequestFilter {
 
 
         // TODO: Substring bearer if its there. Why would it be since that dif from JWT though?
+        System.out.println("Trying authorize " + authorization);
         authorization = authorization.substring(7);
+        System.out.println("Substring " + authorization);
+
 
         String user = authenticator.valToken(authorization);
 
         if (user == null) {
+            System.out.println("Could not validate");
             filterChain.doFilter(request, response);
             return;
         }
