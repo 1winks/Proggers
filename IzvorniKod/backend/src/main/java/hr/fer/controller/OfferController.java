@@ -25,4 +25,5 @@ public class OfferController {
     public Offer createOffer(OfferDTO offerDTO) {
         return offerService.createOffer(offerDTO);
     }
+
 }
