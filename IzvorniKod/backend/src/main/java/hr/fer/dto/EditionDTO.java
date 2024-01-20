@@ -14,6 +14,7 @@ public class EditionDTO {
     private long releaseYear, ISBN;
     private Boolean locallyPurchasable;
     private Edition.Type type;
+    private String publisher;
 
     public long getISBN() {
         return ISBN;
@@ -49,5 +50,9 @@ public class EditionDTO {
 
     public String getGenre() {
         return genre;
+    }
+
+    public String getPublisher() {
+        return publisher;
     }
 }

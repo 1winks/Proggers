@@ -8,6 +8,7 @@ import hr.fer.repository.UserRepository;
 import hr.fer.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -26,7 +27,6 @@ public class SellerServiceJpa implements SellerService {
 
     @Override
     public Seller createSeller(SellerDTO sellerDTO) {
-
         Assert.notNull(sellerDTO, "Seller DTO must not be null");
 
         Seller seller = new Seller(sellerDTO);
