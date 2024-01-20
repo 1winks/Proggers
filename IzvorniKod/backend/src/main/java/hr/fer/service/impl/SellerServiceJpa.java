@@ -8,6 +8,7 @@ import hr.fer.repository.UserRepository;
 import hr.fer.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -26,20 +27,10 @@ public class SellerServiceJpa implements SellerService {
 
     @Override
     public Seller createSeller(SellerDTO sellerDTO) {
-        User user = userRepository.findByEmail(sellerDTO.getMail());
+        Assert.notNull(sellerDTO, "Seller DTO must not be null");
 
-        Seller seller = new Seller();
-        seller.setName(sellerDTO.getName());
-        seller.setMail(sellerDTO.getMail());
-        seller.setAddress(sellerDTO.getAddress());
-        seller.setCountry(sellerDTO.getCountry());
-        seller.setTelephone(sellerDTO.getTelephone());
-        seller.setType(sellerDTO.getType());
+        Seller seller = new Seller(sellerDTO);
 
-        seller.setUser(user);
-        user.setSeller(seller);
-
-        userRepository.save(user);
         sellerRepo.save(seller);
         return seller;
     }

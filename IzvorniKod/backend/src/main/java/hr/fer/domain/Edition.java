@@ -34,7 +34,6 @@ public class Edition {
         this.releaseYear = dto.getReleaseYear();
     }
 
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Type type;
@@ -52,9 +51,12 @@ public class Edition {
     @OneToMany(mappedBy = "edition", cascade = CascadeType.ALL)
     private Set<EditionOffer> editionOffers = new HashSet<>();
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "edition", cascade = CascadeType.ALL)
-    private Set<SellerEdition> sellerEditions = new HashSet<>();
+    public void link (BookEdition bookEdition) {
+        bookEditions.add(bookEdition);
+    }
 
+    public void link (EditionOffer editionOffer) {
+        editionOffers.add(editionOffer);
+    }
 
 }

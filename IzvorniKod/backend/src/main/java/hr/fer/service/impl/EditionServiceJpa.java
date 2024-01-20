@@ -4,6 +4,7 @@ import hr.fer.domain.Book;
 import hr.fer.domain.BookEdition;
 import hr.fer.domain.Edition;
 import hr.fer.dto.EditionDTO;
+import hr.fer.dto.SearchDTO;
 import hr.fer.repository.BookEditionRepository;
 import hr.fer.repository.BookRepository;
 import hr.fer.repository.EditionRepository;
@@ -41,27 +42,29 @@ public class EditionServiceJpa implements EditionService {
 
         Book book = bookService.findByTitleAuthor(editionDTO.getTitle(), editionDTO.getAuthor());
 
-        Assert.notNull(book, "Edition must have valid book.");
+        if (book == null) {
+            book = new Book(editionDTO);
+        }
 
-        BookEdition bookEdition = new BookEdition();
         Edition edition = new Edition(editionDTO);
 
-        bookEdition.setEdition(edition);
-        bookEdition.setBook(book);
+        BookEdition bookEdition = new BookEdition(book, edition);
 
-        Set<BookEdition> bookEditions = edition.getBookEditions();
-        bookEditions.add(bookEdition);
-        edition.setBookEditions(bookEditions);
+        edition.link(bookEdition);
+        book.link(bookEdition);
 
-        bookEditions = book.getBookEditions();
-        bookEditions.add(bookEdition);
-        book.setBookEditions(bookEditions);
-
-        // TODO: Initialize BookEdition, Link all 3 together and save. -> assertovi
-
+        // TODO: Add service methods instead of direct repo access
         bookRepo.save(book);
         editionRepo.save(edition);
         bookEditionRepository.save(bookEdition);
         return edition;
+    }
+
+    @Override
+    public List<Edition> searchEdition(SearchDTO search) {
+        if (search.getCategory().equals("TITLE")) {
+            bookRepo.findByTitle(search.getQuery());
+        }
+        return null;
     }
 }

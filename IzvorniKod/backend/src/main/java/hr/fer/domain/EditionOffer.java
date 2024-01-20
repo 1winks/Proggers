@@ -24,4 +24,9 @@ public class EditionOffer {
     @ManyToOne
     @JoinColumn(name = "edition_isbn")
     private Edition edition;
+
+    public EditionOffer(Edition edition, Offer offer) {
+        this.edition = edition;
+        this.offer = offer;
+    }
 }

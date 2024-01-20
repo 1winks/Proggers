@@ -25,4 +25,9 @@ public class OfferSeller {
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private Seller seller;
+
+    public OfferSeller(Offer offer, Seller seller) {
+        this.offer = offer;
+        this.seller = seller;
+    }
 }

@@ -3,10 +3,18 @@ package hr.fer.dto;
 import hr.fer.domain.Edition;
 
 public class EditionDTO {
-    private String title, author;
+    // Book Values
+    private String title;
+    private String author;
+    private String cover;
+    private String description;
+    private String genre;
+
+    // Edition Values
     private long releaseYear, ISBN;
     private Boolean locallyPurchasable;
     private Edition.Type type;
+    private String publisher;
 
     public long getISBN() {
         return ISBN;
@@ -30,5 +38,21 @@ public class EditionDTO {
 
     public Edition.Type getType() {
         return type;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getPublisher() {
+        return publisher;
     }
 }

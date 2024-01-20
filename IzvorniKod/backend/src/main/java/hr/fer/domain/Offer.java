@@ -1,6 +1,7 @@
 package hr.fer.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import hr.fer.dto.OfferDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,11 @@ public class Offer {
         USED;
     }
 
+    public Offer (OfferDTO dto) {
+        this.copies = dto.getCopies();
+        this.state = dto.getState();
+    }
+
     @Enumerated(EnumType.STRING)
     private State state;
 
@@ -39,4 +45,11 @@ public class Offer {
     @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL)
     private Set<OfferSeller> offerSellers = new HashSet<>();
 
+    public void link (EditionOffer editionOffer) {
+        editionOffers.add(editionOffer);
+    }
+
+    public void link(OfferSeller offerSeller) {
+        offerSellers.add(offerSeller);
+    }
 }
