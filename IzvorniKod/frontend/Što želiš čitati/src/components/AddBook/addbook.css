@@ -40,6 +40,14 @@
     font-size: 20px;
 }
 
+#state {
+    height: 45px;
+    width: 350px;
+    background-color: rgb(224, 219, 219);
+    border-radius: 7px;
+    font-size: 20px;
+}
+
 #description {
     background-color: rgb(224, 219, 219);
     border-radius: 7px;

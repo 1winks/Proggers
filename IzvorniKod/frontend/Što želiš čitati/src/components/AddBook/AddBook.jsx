@@ -12,25 +12,74 @@ function AddBook() {
     const [formData,setFormData]=useState({
         title:'',
         author:'',
-        year:'',
-        publisher:'',
-        publisherCategory:'',
-        genre:'',
-        ISBN:'',
-        editionNo:'',
-        preservationStatus:'',
+        cover: '',
         description:'',
-        cover: null,
-        type:''
+        genre:'',
+        releaseYear:'',
+        ISBN:'',
+        type:'',
+        publisherName:'',
+        publisherCategory:'',
+
+        copies:'',
+        state:'',
+        sellerMail:'',
+    
+        /*
+        editionNo:'',
+        */
+        
+        
+        
     });
 
     const [addBookSuccess, setAddBookSuccess] = useState(false);
 
     const handleChange = (e) => {
 
-        if (e.target.name === 'cover[]') {
-            setFormData({ ...formData, cover: e.target.files});
-        } else {
+        const selectedValue = e.target.value;
+
+        const typeMapping = {
+            optionDefault: '',
+            tip1: 'TRANSLATED',
+            tip2: 'RELATED',
+            tip3: 'FOREIGN'
+        };
+
+        const stateMapping = {
+            optionDefault: '',
+            stanje1: 'NEW',
+            stanje2: 'USED'
+        }
+
+        const publisherMapping = {
+            optionDefault: '',
+            publ1: 'LOCAL',
+            publ2: 'FOREIGN'
+        }
+
+        if (e.target.name === 'cover') {
+            const file = e.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setFormData({ ...formData, cover: reader.result });
+                };
+                reader.readAsDataURL(file);
+            } else {
+                setFormData({ ...formData, [e.target.name]: e.target.value });
+            }
+
+           
+        } else if (e.target.name === 'type') {
+            setFormData({ ...formData, type: typeMapping[selectedValue] });
+        } else if (e.target.name === 'state') {
+            setFormData({ ...formData, state: stateMapping[selectedValue] });
+        } else if (e.target.name === 'publisherCategory') {
+            setFormData({ ...formData, publisherCategory: publisherMapping[selectedValue] });
+        }
+        else {
             setFormData({ ...formData, [e.target.name]: e.target.value });
         }
     };
@@ -41,22 +90,48 @@ function AddBook() {
         if (
             !formData.title ||
             !formData.author ||
-            !formData.year ||
-            !formData.publisher ||
-            !formData.publisherCategory ||
+            !formData.releaseYear ||
+            /* !formData.publisher || */
+           /* !formData.publisherCategory || */
             !formData.genre ||
             !formData.ISBN ||
-            !formData.editionNo ||
-            !formData.preservationStatus ||
+           /* !formData.editionNo || */
+            !formData.state ||
             !formData.description ||
             !formData.cover ||
-            !formData.type                    
+            !formData.type ||
+            !formData.copies ||
+            !formData.sellerMail ||
+            !formData.publisherName ||
+            !formData.publisherCategory              
         ) {
             setAddBookError('Molim Vas da popunite sva polja !');
             return;
         }
         try {
-          await axios.post('http://localhost:8080/books/add', formData);
+
+            const editionData = {
+                title: formData.title,
+                author: formData.author,
+                cover: formData.cover,
+                description: formData.description,
+                genre: formData.genre,
+                releaseYear: formData.releaseYear,
+                ISBN: formData.ISBN,
+                type: formData.type,
+                publisherName: formData.publisherName,
+                publisherCategory: formData.publisherCategory
+            };
+
+            const offerData = {
+                copies: formData.copies,
+                state: formData.state,
+                sellerMail: formData.sellerMail,
+                ISBN: formData.ISBN
+            };
+
+          await axios.post('http://localhost:8080/editions/add', editionData);
+          await axios.post('http://localhost:8080/offers/add', offerData);
 
           console.log('Book added successfully');
           setAddBookSuccess(true);
@@ -87,62 +162,71 @@ function AddBook() {
                     <input type="text" id="author" name="author" onChange={handleChange} />
                 </div>
                 <div className="inputAddBook">
-                    <label htmlFor="year">Godina izdanja</label>
-                    <input type="text" id="year" name="year" onChange={handleChange} />
-                </div>
-                <div className="inputAddBook">
-                    <label htmlFor="publisher">Izdavač</label>
-                    <input type="text" id="publisher" name="publisher" onChange={handleChange} />
-                </div>
-
-                <div className="inputAddBook">
-                    <label htmlFor="publisherCategory">Vrsta izdavača</label>
-                    <select className="inputAddBook" id="publisherCategory" name="publisherCategory" onChange={handleChange} >
-                        <option value="optionDefault"></option>
-                        <option value = "opcija1">Domaći</option>
-                        <option value = "opcija2">Strani</option>
-
-                    </select>
-
-                </div>
-                <div className="inputAddBook">
-                    <label htmlFor="genre">Žanr</label>
-                    <input type="text" id="genre" name="genre" onChange={handleChange} />
-                </div>
-                <div className="inputAddBook">
-                    <label htmlFor="ISBN">ISBN</label>
-                    <input type="text" id="ISBN" name="ISBN" onChange={handleChange} />
-                </div>
-                <div className="inputAddBook">
-                    <label htmlFor="editionNo">Broj izdanja</label>
-                    <input type="text" id="editionNo" name="editionNo" onChange={handleChange} />
-                </div>
-                <div className="inputAddBook">
-                    <label htmlFor="preservationStatus">Stanje očuvanosti</label>
-                    <input type="text" id="preservationStatus" name="preservationStatus" onChange={handleChange} />
+                    <label htmlFor="cover">Slika korica</label>
+                    <input type="file" id="cover" name="cover" accept="image/*" onChange={handleChange} ></input>
                 </div>
                 <div className="inputAddBook">
                     <label htmlFor="description">Tekstni opis</label>
                     <textarea className="inputAddBook" id="description" name="description" rows="8" cols="46" onChange={handleChange} />
                 </div>
                 <div className="inputAddBook">
-                    <label htmlFor="images">Slike korica</label>
-                    <input type="file" id="images" name="cover[]" accept="image/*" multiple onChange={handleChange} ></input>
+                    <label htmlFor="genre">Žanr</label>
+                    <input type="text" id="genre" name="genre" onChange={handleChange} />
+                </div>
+                <div className="inputAddBook">
+                    <label htmlFor="releaseYear">Godina izdanja</label>
+                    <input type="text" id="releaseYear" name="releaseYear" onChange={handleChange} />
+                </div>
+                <div className="inputAddBook">
+                    <label htmlFor="ISBN">ISBN</label>
+                    <input type="text" id="ISBN" name="ISBN" onChange={handleChange} />
+                </div>
+                <div className="inputAddBook">
+                    <label htmlFor="type">Vrsta knjige</label>
+                    <select className="inputAddBook" id="type" name="type" onChange={handleChange} >
+                        <option value="optionDefault"></option>
+                        <option value = "tip1">Hrvatski jezik</option>
+                        <option value = "tip2">Srodni jezik</option>
+                        <option value = "tip3">Strani jezik</option>
+                    </select>
+                </div>
+                <div className="inputAddBook">
+                    <label htmlFor="publisherName">Izdavač</label>
+                    <input type="text" id="publisherName" name="publisherName" onChange={handleChange} />
+                </div>
+                <div className="inputAddBook">
+                    <label htmlFor="type">Vrsta izdavača</label>
+                    <select className="inputAddBook" id="publisherCategory" name="publisherCategory" onChange={handleChange} >
+                        <option value="optionDefault"></option>
+                        <option value = "publ1">Domaći</option>
+                        <option value = "publ2">Strani</option>
+                    </select>
                 </div>
 
                 <div className="inputAddBook">
-                    <label htmlFor="type">Oznaka vrste knjige</label>
-                    <select className="inputAddBook" id="type" name="type" onChange={handleChange} >
-                        <option value="optionDefault"></option>
-                        <option value = "opcija1">Knjiga je na stranom jeziku, a ne postoji izdanje na hrvatskom ili srodnom jeziku.</option>
-                        <option value = "opcija2">Knjiga je izdana na hrvatskom jeziku i dobavljiva je na području Hrvatske.</option>
-                        <option value = "opcija3">Knjiga je izdana na hrvatskom jeziku, ali nije dobavljiva na području Hrvatske.</option>
-                        <option value = "opcija4">Knjiga je izdana na srodnom jeziku, dobavljiva je samo na njihovom tržištu.</option>
-                        <option value = "opcija5">Knjiga je izdana na srodnom jeziku, dobavljiva je u Hrvatskoj, ne postoji na hrvatskom jeziku.</option>
-
-                    </select>
-
+                    <label htmlFor="copies">Broj kopija</label>
+                    <input type="text" id="copies" name="copies" onChange={handleChange} />
                 </div>
+                <div className="inputAddBook">
+                    <label htmlFor="state">Stanje očuvanosti</label>
+                    <select className="inputAddBook" id="state" name="state" onChange={handleChange} >
+                        <option value="optionDefault"></option>
+                        <option value = "stanje1">Novo</option>
+                        <option value = "stanje2">Korišteno</option>
+                    </select>
+                </div>
+                <div className="inputAddBook">
+                    <label htmlFor="sellerMail">Mail adresa</label>
+                    <input type="text" id="sellerMail" name="sellerMail" onChange={handleChange} />
+                </div>
+
+
+                
+
+
+                
+
+
                 <button type="submit" id="submitajknjigu">Dodaj knjigu</button>
             </form>
         </div>
