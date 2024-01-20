@@ -14,7 +14,11 @@ const BookList = () => {
 	const searchBook = (evt) => {
 		if (evt.key === "Enter") {
 			console.log("Enter")
-			axios.get('https://www.googleapis.com/books/v1/volumes?q=' + search +'&keyes&key=AIzaSyCyccsKIUhmA3GpIfhpzRG_CoOeikGUG2A'+'&maxResults=40')
+			axios.get('https://localhost:8080/editions/post', {
+				params: {
+					mylist: search
+				}
+			})
 			.then(res=>setData(res.data.items))
 			.catch(err=>console.log(err))
 		} 

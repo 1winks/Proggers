@@ -10,19 +10,15 @@ const BookListOffer = () => {
 	const [search, setSearch] = useState("");
 	const [bookData, setData] = useState([]);
 
-	const searchBook = (evt) => {
-		if (evt.key === "Enter") {
-			console.log("Enter")
-			//axios.get("")
-			//.then(res=>setData(res.data.items))
-			//.catch(err=>console.log(err))
-		} else {
-			console.log("Click")
-			//axios.get("")
-			//.then(res=>setData(res.data.items))
-			//.catch(err=>console.log(err))
-		}
-	}
+	useEffect(() => { 
+		axios.get('https://localhost:8080/editions/post', {
+			params: {
+				mylist: search
+			}
+		})
+			.then(res => setData(res.data.items))
+			.catch(err => console.log(err));
+	}, [search]); 
 
 
 	return (
@@ -31,15 +27,6 @@ const BookListOffer = () => {
 				<div className="row1Offer">
 					<h1>&#34;A reader lives a thousand lives before he dies. The man who never reads lives only once.&#34;</h1>
 				</div>
-				{/*<div className="row2">*/}
-				{/*	<h2>Pretra&#382;i knjige</h2>*/}
-				{/*	<div className="search">*/}
-				{/*		<input type="text" placeholder="Upi&#353;i ime knjige"*/}
-				{/*			value={search} onChange={e => setSearch(e.target.value)}*/}
-				{/*			onKeyPress={searchBook} />*/}
-				{/*		<button variant="text" onClick={searchBook}>Tra&#382;i</button>*/}
-				{/*	</div>*/}
-				{/*</div>*/}
 			</div>
 			<div className="bookListBodyOffer">
 				{
