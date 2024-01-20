@@ -18,6 +18,7 @@ function AddBook() {
         releaseYear:'',
         ISBN:'',
         type:'',
+        locallyPurchasable:'',
         publisherName:'',
         publisherCategory:'',
 
@@ -38,6 +39,12 @@ function AddBook() {
     const handleChange = (e) => {
 
         const selectedValue = e.target.value;
+
+        const locallyPurchasableMapping = {
+            optionDefault:'none',
+            local1: true,
+            local2: false
+        };
 
         const typeMapping = {
             optionDefault: '',
@@ -78,6 +85,8 @@ function AddBook() {
             setFormData({ ...formData, state: stateMapping[selectedValue] });
         } else if (e.target.name === 'publisherCategory') {
             setFormData({ ...formData, publisherCategory: publisherMapping[selectedValue] });
+        } else if (e.target.name === 'publisherCategory') {
+            setFormData({ ...formData, locallyPurchasable: locallyPurchasableMapping[selectedValue] });
         }
         else {
             setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -85,6 +94,7 @@ function AddBook() {
     };
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         
         if (
@@ -103,11 +113,13 @@ function AddBook() {
             !formData.copies ||
             !formData.sellerMail ||
             !formData.publisherName ||
-            !formData.publisherCategory              
+            !formData.publisherCategory ||
+            formData.locallyPurchasable == 'none'    
         ) {
             setAddBookError('Molim Vas da popunite sva polja !');
             return;
         }
+
         try {
 
             const editionData = {
@@ -119,6 +131,7 @@ function AddBook() {
                 releaseYear: formData.releaseYear,
                 ISBN: formData.ISBN,
                 type: formData.type,
+                locallyPurchasable: formData.locallyPurchasable,
                 publisherName: formData.publisherName,
                 publisherCategory: formData.publisherCategory
             };
@@ -136,7 +149,7 @@ function AddBook() {
           console.log('Book added successfully');
           setAddBookSuccess(true);
 		  
-		  window.location.href = "/"; /*maknuti kasnije mozda*/
+		  window.location.href = "/main"; /*maknuti kasnije mozda*/
 
         } catch (error) {
           console.error('Book adding failed', error);
@@ -190,6 +203,16 @@ function AddBook() {
                         <option value = "tip3">Strani jezik</option>
                     </select>
                 </div>
+                <div className="inputAddBook">
+                    <label htmlFor="type">Dobavljivo na području Hrvatske?</label>
+                    <select className="inputAddBook" id="locallyPurchasable" name="locallyPurchasable" onChange={handleChange} >
+                        <option value="optionDefault"></option>
+                        <option value = "local1">Da</option>
+                        <option value = "local2">Ne</option>
+                        
+                    </select>
+                </div>
+
                 <div className="inputAddBook">
                     <label htmlFor="publisherName">Izdavač</label>
                     <input type="text" id="publisherName" name="publisherName" onChange={handleChange} />

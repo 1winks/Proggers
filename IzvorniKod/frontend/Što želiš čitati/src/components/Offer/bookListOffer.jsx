@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import BookBoxOffer from "./BookBoxOffer";
 import "../BookDetails/BookDetails.css";
 import BookDetails from "../BookDetails/BookDetails"
+import axios from 'axios';
 
 const BookListOffer = () => {
 	const [search, setSearch] = useState("");
