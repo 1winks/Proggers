@@ -1,16 +1,30 @@
 import React from "react"
 import "./style.css"
+import jwt_decode from "jsonwebtoken";
 
 function Header() {
 
-    //var username = document.getElementById("ID_LOGIN_POLJA").value;
+    const token = localStorage.getItem("token");
+  
+    let greetingText = "Pozdrav goste";
+  
 
+    if (token) {
+      try {
+        const decodedToken = jwt_decode(token);
+        const username = decodedToken.username; 
+        greetingText = `Pozdrav, ${username}!`;
+      } catch (error) {
+        console.error("Error decoding token:", error);
+      }
+    }
+  
     return (
-        <header className="headerMain">
-            <p className="greetingMain">Pozdrav, Dario!</p>
-    
-        </header>
-    )
+      <header className="headerMain">
+        <p className="greetingMain">{greetingText}</p>
+      </header>
+    );
+}
 
     /* 
     
@@ -22,6 +36,6 @@ function Header() {
     )
     
     */
-}
+
 
 export default Header
