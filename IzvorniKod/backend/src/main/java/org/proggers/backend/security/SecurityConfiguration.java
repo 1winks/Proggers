@@ -37,7 +37,8 @@ public class SecurityConfiguration {
                         auth.requestMatchers("/auth/**").permitAll()
                                 // Something here for cors?
                                 .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
-                                .requestMatchers("/api/**").authenticated()
+                                .requestMatchers("/api/books/**").permitAll()
+                                .requestMatchers("/api/seller/**").authenticated()
                 )
                 .exceptionHandling((exception) -> exception.authenticationEntryPoint(entryPoint))
                 .sessionManagement((session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)))
