@@ -31,6 +31,4 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findByLanguageTag(Book.LanguageTag languageTag);
 
-    List<Book> findByAddress(String address);
-
 }

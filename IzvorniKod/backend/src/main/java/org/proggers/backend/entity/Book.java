@@ -14,7 +14,6 @@ public class Book {
     private String title;
     private String author;
     private String publisher;
-
     private int publicationYear;
 
     public enum PublisherCategory {
@@ -40,7 +39,6 @@ public class Book {
         NATIVE
     }
     private LanguageTag languageTag;
-    private String address;
 
     @JsonIgnore
     @ManyToOne
@@ -61,7 +59,6 @@ public class Book {
         this.copies = bookDTO.getCopies();
         this.description = bookDTO.getDescription();
         this.languageTag = bookDTO.getLanguageTag();
-        this.address = bookDTO.getAddress();
         this.seller = seller;
     }
     public Long getId() {
@@ -110,9 +107,5 @@ public class Book {
 
     public LanguageTag getLanguageTag() {
         return languageTag;
-    }
-
-    public String getAddress() {
-        return address;
     }
 }

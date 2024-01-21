@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface BookService {
 
+    List<Book> find (String type, String query);
+
     List<Book> list ();
     void add (Book book);
 }

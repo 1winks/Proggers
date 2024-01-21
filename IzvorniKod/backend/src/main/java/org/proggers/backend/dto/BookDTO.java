@@ -14,7 +14,6 @@ public class BookDTO {
     private int copies;
     private String description;
     private Book.LanguageTag languageTag;
-    private String address;
 
     public String getTitle() {
         return title;
@@ -60,7 +59,4 @@ public class BookDTO {
         return languageTag;
     }
 
-    public String getAddress() {
-        return address;
-    }
 }

@@ -1,6 +1,7 @@
 package org.proggers.backend.endpoints;
 
 import org.proggers.backend.dto.BookDTO;
+import org.proggers.backend.dto.BookQueryDTO;
 import org.proggers.backend.entity.Book;
 import org.proggers.backend.entity.Seller;
 import org.proggers.backend.service.BookService;
@@ -33,6 +34,11 @@ public class BookController {
     @GetMapping("/list")
     public List<Book> list () {
         return bookService.list();
+    }
+
+    @PostMapping("/find")
+    public List<Book> find (@RequestBody BookQueryDTO bookQueryDTO) {
+        return bookService.find(bookQueryDTO.getType(), bookQueryDTO.getQuery());
     }
 
     @PostMapping("/add")

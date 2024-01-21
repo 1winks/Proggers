@@ -46,6 +46,8 @@ public class Seller {
         this.country = registrationDTO.getCountry();
     }
 
+
+
     public Long getId() {
         return id;
     }
