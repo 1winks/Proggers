@@ -25,7 +25,7 @@ const BookList = () => {
 				
 				res=>{
 					console.log(res)
-					setData(res.data.items)
+					setData(res.data)
 				}
 			)
 			.catch(err=>console.log(err))

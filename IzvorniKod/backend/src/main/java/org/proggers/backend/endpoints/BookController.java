@@ -16,6 +16,11 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @GetMapping("")
+    public String ping () {
+        return "/api/books";
+    }
+
     @GetMapping("/list")
     public List<Book> list () {
         return bookService.list();
@@ -24,8 +29,6 @@ public class BookController {
     @PostMapping("/find")
     public List<Book> find (@RequestBody BookQueryDTO bookQueryDTO) {
         List<Book> books = bookService.find(bookQueryDTO.getType(), bookQueryDTO.getQuery());
-        System.out.println(books.size());
-
         return books;
     }
 
