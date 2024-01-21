@@ -14,13 +14,14 @@
 
 .overlay-inner{
     background: white;
-    width: 700px;
-    height: 550px;
+    width: 60%;
+    height: 90%;
     padding: 1.5rem;
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
     font-size: 1.3rem;
+    line-height: 100%;
 }
 
 .overlay-inner .close{
@@ -33,24 +34,37 @@
     background-color: transparent;
 }
 
+.overlay-inner .prevedi {
+    outline: none;
+    border: none;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #24a0ed;
+    color: white;
+    font-weight: bold;
+    padding: 0.3rem 0.5rem;
+}
+
 .overlay-inner .inner-box{
     margin-top: 30px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.overlay-inner .inner-box img{
-    margin-right: 20px;
-    width: 150px;
-    height: 200px;
+.overlay-inner .inner-box img {
+    margin-right: 15%;
+    width: 20%;
+    height: 20%;
 }
 
 .overlay-inner .inner-box h3{
-    margin-top: 10px;
+    margin-top: 3%;
     color: forestgreen;
 }
 
 .overlay-inner .inner-box h4{
+    margin-top: 3%;
     color: blue;
 }
 
@@ -65,8 +79,20 @@
     padding: 0.3rem 0.5rem;
 }
 
+.overlay-inner .close {
+    outline: none;
+    border: none;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #24a0ed;
+    color: white;
+    font-weight: bold;
+    padding: 0.3rem 0.5rem;
+}
+
+
 .overlay-inner .description{
     margin-top: 2rem;
     text-align: justify;
-    font-size: 13px;
+    font-size: 20px;
 }

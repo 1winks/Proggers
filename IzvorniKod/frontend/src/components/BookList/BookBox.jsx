@@ -10,7 +10,7 @@ const BookBox = ({ book }) => {
     return (
         <>
             {
-                book.map((item) => {
+                book.map(item => {
                     let image = item.cover;
                     if (image != undefined) {
                         return (
