@@ -26,7 +26,7 @@ public class BookServiceJpa implements BookService {
 
     @Override
     public List<Book> find(String type, String query) {
-        return switch (type.toLowerCase()) {
+        return switch (type) {
             case "title" -> bookRepository.findByTitle(query);
             case "author" -> bookRepository.findByAuthor(query);
             case "isbn" -> bookRepository.findByIsbn(query);

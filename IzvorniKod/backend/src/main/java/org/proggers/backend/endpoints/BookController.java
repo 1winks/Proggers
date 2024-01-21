@@ -16,6 +16,11 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @GetMapping("")
+    public String ping () {
+        return "/api/books";
+    }
+
     @GetMapping("/list")
     public List<Book> list () {
         return bookService.list();
