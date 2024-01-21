@@ -1,9 +1,7 @@
 package org.proggers.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import org.proggers.backend.dto.BookDTO;
 
 @Entity
@@ -44,9 +42,14 @@ public class Book {
     private LanguageTag languageTag;
     private String address;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
+
     public Book () {}
 
-    public Book(BookDTO bookDTO) {
+    public Book(BookDTO bookDTO, Seller seller) {
         this.title = bookDTO.getTitle();
         this.author = bookDTO.getAuthor();
         this.publisher = bookDTO.getPublisher();
@@ -59,6 +62,7 @@ public class Book {
         this.description = bookDTO.getDescription();
         this.languageTag = bookDTO.getLanguageTag();
         this.address = bookDTO.getAddress();
+        this.seller = seller;
     }
     public Long getId() {
         return id;

@@ -19,10 +19,9 @@ public class SellerServiceJpa implements SellerService {
     }
 
     @Override
-    public void register(Seller seller) {
+    public void update(Seller seller) {
         // TODO: Checks?
         sellerRepository.save(seller);
-        return;
     }
 
     @Override

@@ -40,7 +40,7 @@ public class AuthenticationController {
     public ResponseEntity<Void> register (@Valid @RequestBody RegisterDTO registerDTO) {
         if (!sellerService.exists(registerDTO.getUsername(), registerDTO.getEmail())) {
             Seller seller = new Seller(registerDTO, passwordEncoder);
-            sellerService.register(seller);
+            sellerService.update(seller);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

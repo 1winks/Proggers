@@ -1,8 +1,11 @@
 package org.proggers.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.proggers.backend.dto.RegisterDTO;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 @Entity
 public class Seller {
@@ -27,6 +30,10 @@ public class Seller {
     private String telephone;
     private String address;
     private String country;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
+    private List<Book> books;
 
     public Seller () {}
     public Seller(RegisterDTO registrationDTO, PasswordEncoder encoder) {
