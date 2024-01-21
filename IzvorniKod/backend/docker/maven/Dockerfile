@@ -1,11 +1,14 @@
 # Container za izgradnju (build) aplikacije
 FROM openjdk:17-alpine AS builder
 
+RUN ls
+RUN pwd
+
 # Kopiranje izvornog koda u container
-# COPY ../../.mvn .mvn
-# COPY ../../mvnw .
-# COPY ../../pom.xml .
-# COPY ../../src src
+COPY ../../.mvn .mvn
+COPY ../../mvnw .
+COPY ../../pom.xml .
+COPY ../../src src
 RUN chmod +x mvnw
 
 # Pokretanje builda
