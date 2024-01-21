@@ -1,20 +1,9 @@
 package org.proggers.backend.service;
 
-import org.proggers.backend.domain.Seller;
-import org.proggers.backend.dto.RegistrationUserDTO;
+import org.proggers.backend.entity.Seller;
 
-import java.util.List;
-
-/**
- * Service Wrapper that manages DB calls related to Sellers.
- * @see Seller
- */
 public interface SellerService {
-    List<Seller> list();
-
-//    List<Seller> list(Seller.Type type);
-
-    Seller createSeller(RegistrationUserDTO seller);
-
-    void remove(String username);
+    void update(Seller seller);
+    boolean exists (String username, String email);
+    Seller find (String username);
 }

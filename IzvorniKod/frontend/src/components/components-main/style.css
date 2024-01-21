@@ -1,0 +1,61 @@
+.headerMain {
+    background-color: #353A40;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+}
+
+.greetingMain {
+    color: white;
+    padding-left: 20px;
+}
+
+.bodyMain {
+    height: 82vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 5px;
+    margin-top: 10px;
+}
+
+.card {
+    height: 16vh;
+    width: 100%;
+    border-radius: 5px;;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.card:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cardImage {
+    height: 65%;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.cardName {
+    margin: 0;
+}
+
+.footerMain {
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    height: 7vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+
+.footerButtonContainer {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+

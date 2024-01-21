@@ -1,15 +1,17 @@
 package org.proggers.backend.service;
 
-import org.proggers.backend.domain.Book;
-import org.proggers.backend.domain.Seller;
+import org.proggers.backend.entity.Book;
+import org.proggers.backend.entity.Seller;
+
 import java.util.List;
 
-/**
- * Service Wrapper that manages DB calls related to Sellers.
- * @see Book
- */
 public interface BookService {
-    List<Book> list();
 
-    Book createBook(Book book);
+    List<Book> find (String type, String query);
+
+    List<Book> list ();
+    void add (Book book);
+
+    List<Book> getSellersBooks (Seller seller);
+
 }
