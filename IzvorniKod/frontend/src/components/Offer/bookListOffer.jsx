@@ -11,8 +11,8 @@ const BookListOffer = () => {
 	const [search, setSearch] = useState("");
 	const [bookData, setData] = useState([]);
 
-	useEffect(() => { 
-
+	useEffect(() => {
+		
 		axios.get(
 			'http://localhost:8080/api/sellers/getBooks',
 			{

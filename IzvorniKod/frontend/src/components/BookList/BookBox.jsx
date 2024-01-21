@@ -11,15 +11,15 @@ const BookBox = ({ book }) => {
         <>
             {
                 book.map((item) => {
-                    let image = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
+                    let image = item.cover;
                     if (image != undefined) {
                         return (
                             <>
                                 <div className="bookCard" onClick={() => { setShow(true); setItem(item) }}>
                                     <img src={image} alt="" />
                                     <div className="bookCardBottom">
-                                        <h3 className="bookCardTitle">{item.volumeInfo.title}</h3>
-                                        <h3 className="bookCardAuthor">{item.volumeInfo.autors}</h3>
+                                        <h3 className="bookCardTitle">{item.title}</h3>
+                                        <h3 className="bookCardAuthor">{item.author}</h3>
                                     </div>
                                 </div>
                                 <BookDetails show={show} item={bookItem} onClose={() => setShow(false)} />
