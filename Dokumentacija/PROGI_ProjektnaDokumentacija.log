@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.16)  21 JAN 2024 22:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.16)  21 JAN 2024 22:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2282,11 +2282,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
  (./Zakljucak.tex
 Poglavlje 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 3--4
-
- []
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.19202pt, for example:
 (fancyhdr)                \setlength{\headheight}{15.19202pt}.
@@ -2455,7 +2450,7 @@ dist/fonts/type1/public/kpfonts/jkpmit8a.pfb><c:/texlive/2023/texmf-dist/fonts/
 type1/public/kpfonts/jkpmn8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public
 /kpfonts/jkpmne.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/kpfonts/jkpt
 tmn8a.pfb>
-Output written on PROGI_ProjektnaDokumentacija.pdf (51 pages, 1309523 bytes).
+Output written on PROGI_ProjektnaDokumentacija.pdf (51 pages, 1311194 bytes).
 PDF statistics:
  768 PDF objects out of 1000 (max. 8388607)
  665 compressed objects within 7 object streams
