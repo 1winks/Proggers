@@ -13,18 +13,36 @@ const BookListOffer = () => {
 
 	useEffect(() => { 
 
-		axios.get('http://localhost:8080/api/books/list', 
-		// {
-		// 	params: {
-		// 		mylist: search
-		// 	}
-		// }
-		)
-			.then(res => {
+		axios.get(
+			'http://localhost:8080/api/sellers/getBooks',
+			{
+			  headers: {
+				// 'Content-Type': 'application/json',
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			  },
+			}
+		  )
+		  .then(res => {
+				console.log('response data');
 				console.log(res.data);
-				setData(res.data.items)
-			})
-			// .catch(err => console.log(err));
+				setData(res.data);
+				// setData(prevData => [...prevData, ...res.data]);  
+				console.log('setData: ');
+				console.log(bookData);
+		  });
+
+		// axios.get('http://localhost:8080/api/books/list', 
+		// // {
+		// // 	params: {
+		// // 		mylist: search
+		// // 	}
+		// // }
+		// )
+		// 	.then(res => {
+		// 		console.log(res.data);
+		// 		setData(res.data.items)
+		// 	})
+		// 	// .catch(err => console.log(err));
 	}, [search]); 
 
 

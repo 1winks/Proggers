@@ -41,7 +41,7 @@ function AddBook() {
 
         const typeMapping = {
             optionDefault: '',
-            tip1: 'TRANSLATED',
+            tip1: 'NATIVE',
             tip2: 'RELATED',
             tip3: 'FOREIGN'
         };
@@ -58,21 +58,22 @@ function AddBook() {
             publ2: 'FOREIGN'
         }
 
-        if (e.target.name === 'cover') {
-            const file = e.target.files[0];
+        // if (e.target.name === 'cover') {
+        //     const file = e.target.files[0];
 
-            if (file) {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    setFormData({ ...formData, cover: reader.result });
-                };
-                reader.readAsDataURL(file);
-            } else {
-                setFormData({ ...formData, [e.target.name]: e.target.value });
-            }
+        //     if (file) {
+        //         const reader = new FileReader();
+        //         reader.onloadend = () => {
+        //             setFormData({ ...formData, cover: reader.result });
+        //         };
+        //         reader.readAsDataURL(file);
+        //     } else {
+        //         setFormData({ ...formData, [e.target.name]: e.target.value });
+        //     }
 
            
-        } else if (e.target.name === 'type') {
+        // }
+        if (e.target.name === 'type') {
             setFormData({ ...formData, type: typeMapping[selectedValue] });
         } else if (e.target.name === 'state') {
             setFormData({ ...formData, state: stateMapping[selectedValue] });
@@ -110,33 +111,46 @@ function AddBook() {
         }
         try {
 
-            const editionData = {
+            const data = {
                 title: formData.title,
                 author: formData.author,
                 cover: formData.cover,
                 description: formData.description,
                 genre: formData.genre,
-                releaseYear: formData.releaseYear,
-                ISBN: formData.ISBN,
-                type: formData.type,
-                publisherName: formData.publisherName,
-                publisherCategory: formData.publisherCategory
-            };
-
-            const offerData = {
+                publicationYear: formData.releaseYear,
+                isbn: formData.ISBN,
+                languageTag: formData.type,
                 copies: formData.copies,
-                state: formData.state,
-                sellerMail: formData.sellerMail,
-                ISBN: formData.ISBN
+                publisher: formData.publisherName,
+                publisherCategory: formData.publisherCategory,
+                condition: formData.state
             };
 
-          await axios.post('http://localhost:8080/editions/add', editionData);
-          await axios.post('http://localhost:8080/offers/add', offerData);
+            // const offerData = {
+            //     copies: formData.copies,
+            //     state: formData.state,
+            //     sellerMail: formData.sellerMail,
+            //     ISBN: formData.ISBN
+            // };
+
+            const response = await axios.post(
+                'http://localhost:8080/api/sellers/addBook',
+                data,
+                {
+                  headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                  },
+                }
+              );
+
+        //   await axios.post('http://localhost:8080/editions/add', editionData);
+        //   await axios.post('http://localhost:8080/offers/add', offerData);
 
           console.log('Book added successfully');
           setAddBookSuccess(true);
 		  
-		  window.location.href = "/"; /*maknuti kasnije mozda*/
+		//   window.location.href = "/"; /*maknuti kasnije mozda*/
 
         } catch (error) {
           console.error('Book adding failed', error);
@@ -163,7 +177,8 @@ function AddBook() {
                 </div>
                 <div className="inputAddBook">
                     <label htmlFor="cover">Slika korica</label>
-                    <input type="file" id="cover" name="cover" accept="image/*" onChange={handleChange} ></input>
+                    <input type="text" name="cover" id="cover" onChange={handleChange} />
+                    {/* <input type="file" id="cover" name="cover" accept="image/*" onChange={handleChange} ></input> */}
                 </div>
                 <div className="inputAddBook">
                     <label htmlFor="description">Tekstni opis</label>
