@@ -12,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/sellers")
@@ -21,6 +23,23 @@ public class SellerController {
 
     @Autowired
     BookService bookService;
+
+    @GetMapping("")
+    public String ping () {
+        return "Hello, World";
+    }
+
+    @GetMapping("/getBooks")
+    public List<Book> getBooks () {
+        System.out.println("Accessed endpoint");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+
+        Seller seller = sellerService.find(username);
+
+        return bookService.getSellersBooks(seller);
+    }
 
     @PostMapping("/addBook")
     public ResponseEntity<Void> addBook (@RequestBody BookDTO bookDTO) {

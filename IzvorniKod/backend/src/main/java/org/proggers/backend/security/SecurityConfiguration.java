@@ -46,7 +46,7 @@ public class SecurityConfiguration {
                                 // Something here for cors?
                                 .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
                                 .requestMatchers("/api/books/**").permitAll()
-                                .requestMatchers("/api/seller/**").authenticated()
+                                .requestMatchers("/api/sellers/**").authenticated()
                 )
                 .exceptionHandling((exception) -> exception.authenticationEntryPoint(entryPoint))
                 .sessionManagement((session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)))
@@ -74,6 +74,7 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
+//        corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
         corsConfiguration.addAllowedOrigin(frontendOrigin);
         corsConfiguration.addAllowedOrigin(frontendOrigin + "/searchbooks");
         corsConfiguration.addAllowedOrigin(frontendOrigin + "/offer");

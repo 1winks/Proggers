@@ -14,6 +14,11 @@ public class BookDTO {
     private int copies;
     private String description;
     private Book.LanguageTag languageTag;
+    private String cover;
+
+    public String getCover() {
+        return cover;
+    }
 
     public String getTitle() {
         return title;

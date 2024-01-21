@@ -1,6 +1,7 @@
 package org.proggers.backend.repository;
 
 import org.proggers.backend.entity.Book;
+import org.proggers.backend.entity.Seller;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -30,5 +31,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByDescription(String description);
 
     List<Book> findByLanguageTag(Book.LanguageTag languageTag);
+
+    List<Book> findBySeller(Seller seller);
+
+    List<Book> findByCover(String cover);
 
 }

@@ -23,7 +23,10 @@ public class BookController {
 
     @PostMapping("/find")
     public List<Book> find (@RequestBody BookQueryDTO bookQueryDTO) {
-        return bookService.find(bookQueryDTO.getType(), bookQueryDTO.getQuery());
+        List<Book> books = bookService.find(bookQueryDTO.getType(), bookQueryDTO.getQuery());
+        System.out.println(books.size());
+
+        return books;
     }
 
 }

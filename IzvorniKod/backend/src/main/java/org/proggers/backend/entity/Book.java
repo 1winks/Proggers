@@ -40,6 +40,8 @@ public class Book {
     }
     private LanguageTag languageTag;
 
+    private String cover;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "seller_id")
@@ -59,6 +61,7 @@ public class Book {
         this.copies = bookDTO.getCopies();
         this.description = bookDTO.getDescription();
         this.languageTag = bookDTO.getLanguageTag();
+        this.cover = bookDTO.getCover();
         this.seller = seller;
     }
     public Long getId() {
@@ -107,5 +110,13 @@ public class Book {
 
     public LanguageTag getLanguageTag() {
         return languageTag;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public Seller getSeller() {
+        return seller;
     }
 }
