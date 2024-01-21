@@ -1,6 +1,7 @@
 package org.proggers.backend.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,11 +19,16 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
+
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = false)
 public class SecurityConfiguration {
+    @Value("${app.cors.allowedOrigins}")
+    private String frontendOrigin;
+
     private SellerDetailsService service;
     private EntryPoint entryPoint;
     @Autowired
@@ -32,6 +38,8 @@ public class SecurityConfiguration {
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http.cors(withDefaults());
+
         return http
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/auth/**").permitAll()
@@ -66,7 +74,11 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("http://localhost:3000");
+        corsConfiguration.addAllowedOrigin(frontendOrigin);
+        corsConfiguration.addAllowedOrigin(frontendOrigin + "/searchbooks");
+        corsConfiguration.addAllowedOrigin(frontendOrigin + "/offer");
+        corsConfiguration.addAllowedOrigin(frontendOrigin + "/addbook");
+        corsConfiguration.addAllowedOrigin(frontendOrigin + "/search");
         corsConfiguration.addAllowedMethod("*");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.setAllowCredentials(true);
