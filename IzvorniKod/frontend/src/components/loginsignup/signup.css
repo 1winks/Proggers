@@ -1,0 +1,113 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.header-reg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.text{
+    color: rgba(73, 13, 13, 0.61);
+    font-size: 38px;
+    font-weight: 800;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;  
+    align-items: center;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    margin: auto;  
+    position: relative;
+    align-items: flex-start;
+}
+.input label{
+    margin: 10px 5px;
+    font-weight: bold;
+}
+.input input{
+    height: 45px;
+    width: 350px;
+    background-color: rgb(224, 219, 219);
+    border-radius: 7px;
+    font-size: 20px;
+}
+
+.submit-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    align-items: center;
+}
+.submit{
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    color: white;
+    background:rgba(165, 42, 42, 0.566);
+    border-radius: 45px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-style: none;
+}
+.change{
+    margin-top: 15px;
+    text-decoration: none;
+}
+.redirect{
+    color: rgba(165, 42, 42, 0.564);
+    cursor: pointer;
+    text-decoration: none;
+}
+.toggle{
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 75%;
+    transform: translateY(-75%);
+    width: 20px;
+    height: 20px;
+}
+
+
+
+.option-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: -280px;  
+}
+.options {
+    display: flex;
+    align-items:center;
+}
+.option-radio{
+    margin-right: -50px;
+}
+
+input[type="radio"] {
+    -ms-transform: scale(0.7);
+    -webkit-transform: scale(0.7); 
+    transform: scale(0.7);
+}
+
+.error-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 5px;
+    font-weight: bold;
+    color: tomato;
+    font-size: 22px;
+}
