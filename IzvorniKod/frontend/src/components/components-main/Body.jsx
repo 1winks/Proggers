@@ -8,9 +8,9 @@ function Body() {
 
 
     const filteredCards = token
-      ? cardsInfo.map(card => <Card key={card.id} name={card.name} image={card.imagesrc} href={card.href} />)
-      : cardsInfo.filter(card => card.id === 1 || card.id === 3)
-                 .map(card => <Card key={card.id} name={card.name} image={card.imagesrc} href={card.href} />);
+        ? cardsInfo.map(card => <Card key={card.id} name={card.name} image={card.imagesrc} href={card.href} />)
+        : cardsInfo.filter(card => card.id === 1 || card.id === 3)
+            .map(card => <Card key={card.id} name={card.name} image={card.imagesrc} href={card.href} />);
 
 
 

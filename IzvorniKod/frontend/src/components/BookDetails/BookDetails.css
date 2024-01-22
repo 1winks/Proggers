@@ -1,6 +1,6 @@
-.overlay{
+.overlay {
     min-height: 100vh;
-    width:100%;
+    width: 100%;
     position: fixed;
     left: 0;
     top: 0;
@@ -12,61 +12,87 @@
     justify-content: center;
 }
 
-.overlay-inner{
+.overlay-inner {
     background: white;
-    width: 700px;
-    height: 550px;
+    width: 60%;
+    height: 90%;
     padding: 1.5rem;
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
     font-size: 1.3rem;
+    line-height: 100%;
 }
 
-.overlay-inner .close{
-    position :absolute;
-    top: 1rem;
-    right: 1rem;
-    outline: none;
-    border: none;
-    font-size: 17px;
-    background-color: transparent;
-}
+    .overlay-inner .close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        outline: none;
+        border: none;
+        font-size: 17px;
+        background-color: transparent;
+    }
 
-.overlay-inner .inner-box{
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-}
+    .overlay-inner .prevedi {
+        outline: none;
+        border: none;
+        width: 100px;
+        border-radius: 5px;
+        background-color: #24a0ed;
+        color: white;
+        font-weight: bold;
+        padding: 0.3rem 0.5rem;
+    }
 
-.overlay-inner .inner-box img{
-    margin-right: 20px;
-    width: 150px;
-    height: 200px;
-}
+    .overlay-inner .inner-box {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.overlay-inner .inner-box h3{
-    margin-top: 10px;
-    color: forestgreen;
-}
+        .overlay-inner .inner-box img {
+            margin-right: 15%;
+            width: 20%;
+            height: 20%;
+        }
 
-.overlay-inner .inner-box h4{
-    color: blue;
-}
+        .overlay-inner .inner-box h3 {
+            margin-top: 3%;
+            color: forestgreen;
+        }
 
-.overlay-inner .inner-box button{
-    outline: none;
-    border: none;
-    width: 100px;
-    border-radius: 5px;
-    background-color: #24a0ed;
-    color: white;
-    font-weight: bold;
-    padding: 0.3rem 0.5rem;
-}
+        .overlay-inner .inner-box h4 {
+            margin-top: 3%;
+            color: blue;
+        }
 
-.overlay-inner .description{
-    margin-top: 2rem;
-    text-align: justify;
-    font-size: 13px;
-}
+        .overlay-inner .inner-box button {
+            outline: none;
+            border: none;
+            width: 100px;
+            border-radius: 5px;
+            background-color: #24a0ed;
+            color: white;
+            font-weight: bold;
+            padding: 0.3rem 0.5rem;
+        }
+
+    .overlay-inner .close {
+        outline: none;
+        border: none;
+        width: 100px;
+        border-radius: 5px;
+        background-color: #24a0ed;
+        color: white;
+        font-weight: bold;
+        padding: 0.3rem 0.5rem;
+    }
+
+
+    .overlay-inner .description {
+        margin-top: 2rem;
+        text-align: justify;
+        font-size: 20px;
+    }
