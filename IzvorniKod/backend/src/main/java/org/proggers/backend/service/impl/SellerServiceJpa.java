@@ -1,6 +1,5 @@
 package org.proggers.backend.service.impl;
 
-
 import org.proggers.backend.dto.RegisterDTO;
 import org.proggers.backend.entity.Seller;
 import org.proggers.backend.repository.SellerRepository;

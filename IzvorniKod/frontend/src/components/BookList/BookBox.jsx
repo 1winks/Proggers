@@ -4,13 +4,13 @@ import BookDetails from "../BookDetails/BookDetails";
 
 
 const BookBox = ({ book }) => {
-    const [show, setShow] = useState(false);
+    const [show, setShow]=useState(false);
     const [bookItem, setItem] = useState();
     console.log(book)
     return (
         <>
             {
-                book.map(item => {
+                book.map((item) => {
                     let image = item.cover;
                     if (image != undefined) {
                         return (
@@ -41,7 +41,7 @@ const BookBox = ({ book }) => {
                     }
                 })
             }
-
+                        
         </>
     )
 }

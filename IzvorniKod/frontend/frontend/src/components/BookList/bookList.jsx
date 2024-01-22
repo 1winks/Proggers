@@ -1,4 +1,4 @@
-﻿import react, { useState, useEffect } from "react";
+import react, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import "./bookList.css";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ const BookList = () => {
 				
 				res=>{
 					console.log(res)
-					setData(res.data)
+					setData(res.data.items)
 				}
 			)
 			.catch(err=>console.log(err))
