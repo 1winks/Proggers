@@ -74,12 +74,12 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
-//        corsConfiguration.addAllowedOrigin(frontendOrigin);
-//        corsConfiguration.addAllowedOrigin(frontendOrigin + "/searchbooks");
-//        corsConfiguration.addAllowedOrigin(frontendOrigin + "/offer");
-//        corsConfiguration.addAllowedOrigin(frontendOrigin + "/addbook");
-//        corsConfiguration.addAllowedOrigin(frontendOrigin + "/search");
+//        corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
+        corsConfiguration.addAllowedOrigin(frontendOrigin);
+        corsConfiguration.addAllowedOrigin(frontendOrigin + "/searchbooks");
+        corsConfiguration.addAllowedOrigin(frontendOrigin + "/offer");
+        corsConfiguration.addAllowedOrigin(frontendOrigin + "/addbook");
+        corsConfiguration.addAllowedOrigin(frontendOrigin + "/search");
         corsConfiguration.addAllowedMethod("*");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.setAllowCredentials(true);
