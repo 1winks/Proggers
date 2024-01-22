@@ -14,7 +14,7 @@ const BookListOffer = () => {
 	useEffect(() => {
 		
 		axios.get(
-			'http://localhost:8080/api/sellers/getBooks',
+			'https://proggers.xyz:8080/api/sellers/getBooks',
 			{
 			  headers: {
 				// 'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const BookListOffer = () => {
 				console.log(bookData);
 		  });
 
-		// axios.get('http://localhost:8080/api/books/list', 
+		// axios.get('https://proggers.xyz:8080/api/books/list', 
 		// // {
 		// // 	params: {
 		// // 		mylist: search

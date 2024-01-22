@@ -134,7 +134,7 @@ function AddBook() {
             // };
 
             const response = await axios.post(
-                'http://localhost:8080/api/sellers/addBook',
+                'https://proggers.xyz:8080/api/sellers/addBook',
                 data,
                 {
                   headers: {
@@ -144,8 +144,8 @@ function AddBook() {
                 }
               );
 
-        //   await axios.post('http://localhost:8080/editions/add', editionData);
-        //   await axios.post('http://localhost:8080/offers/add', offerData);
+        //   await axios.post('https://proggers.xyz:8080/editions/add', editionData);
+        //   await axios.post('https://proggers.xyz:8080/offers/add', offerData);
 
           console.log('Book added successfully');
           setAddBookSuccess(true);

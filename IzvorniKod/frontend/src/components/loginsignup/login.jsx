@@ -19,7 +19,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8080/auth/login', {
+            const response = await axios.post('https://proggers.xyz:8080/auth/login', {
                 username: username,
                 password: password
             });

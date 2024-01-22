@@ -49,7 +49,7 @@ const Signup = () => {
             return;
         }
         try {
-          await axios.post('http://localhost:8080/auth/register', formData);
+          await axios.post('https://proggers.xyz:8080/auth/register', formData);
 
           console.log('User registered successfully');
           setRegistrationSuccess(true);
