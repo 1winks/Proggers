@@ -16,6 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/auth")
@@ -46,12 +48,48 @@ public class AuthenticationController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @PostMapping("/verify")
+    public ResponseEntity<Void> verify (@RequestBody String username) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!authentication.getName().equals("admin")) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        Seller seller = sellerService.find(username);
+
+        if (seller == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        seller.verify();
+
+        sellerService.update(seller);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/unverified")
+    public ResponseEntity<List<Seller>> unverified () {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!authentication.getName().equals("admin")) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        return new ResponseEntity<>(sellerService.unverified(), HttpStatus.OK);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<String> login (@Valid @RequestBody LoginDTO loginDTO) {
         Seller seller = sellerService.find(loginDTO.getUsername());
 
-        if (seller == null) {
+        if (seller == null && !loginDTO.getUsername().equals("admin")) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        if (seller != null && !seller.isVerified()) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
 
         try {

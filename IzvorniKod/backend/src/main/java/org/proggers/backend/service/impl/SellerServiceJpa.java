@@ -7,6 +7,7 @@ import org.proggers.backend.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,4 +31,8 @@ public class SellerServiceJpa implements SellerService {
         return seller.orElse(null);
     }
 
+    @Override
+    public List<Seller> unverified() {
+        return sellerRepository.findByVerified(false);
+    }
 }

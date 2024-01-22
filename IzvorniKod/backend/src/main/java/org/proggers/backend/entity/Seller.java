@@ -35,6 +35,9 @@ public class Seller {
     @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
     private List<Book> books;
 
+    @JsonIgnore
+    private boolean verified;
+
     public Seller () {}
     public Seller(RegisterDTO registrationDTO, PasswordEncoder encoder) {
         this.username = registrationDTO.getUsername();
@@ -44,9 +47,12 @@ public class Seller {
         this.telephone = registrationDTO.getTelephone();
         this.address = registrationDTO.getAddress();
         this.country = registrationDTO.getCountry();
+        this.verified = false;
     }
 
-
+    public void verify () {
+        this.verified = true;
+    }
 
     public Long getId() {
         return id;
@@ -78,5 +84,9 @@ public class Seller {
 
     public String getCountry() {
         return country;
+    }
+
+    public boolean isVerified() {
+        return verified;
     }
 }

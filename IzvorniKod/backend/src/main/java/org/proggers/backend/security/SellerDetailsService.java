@@ -3,12 +3,14 @@ package org.proggers.backend.security;
 import org.proggers.backend.entity.Seller;
 import org.proggers.backend.repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -22,8 +24,14 @@ public class SellerDetailsService implements UserDetailsService {
     @Autowired
     private SellerRepository sellerRepo;
 
+    @Value("${adminPass}")
+    private String adminPass;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        if (username.equals("admin"))  {
+            return new User("admin", adminPass, List.of(new SimpleGrantedAuthority("ROLE_ADMIN")));
+        }
         Optional<Seller> optionalSeller = sellerRepo.findByUsername(username);
         if (optionalSeller.isEmpty()) {
             throw new UsernameNotFoundException("Unknown User.");
