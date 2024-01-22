@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+
+\title{Opis}
+
+\begin{document}
+	
+	
+	\section*{Dijagram stanja}
+	Web aplikacija omogućuje korisnicima pretraživanje ponude knjiga. Kad korisnik dođe na stranicu za pretraživanje tada ima status 'U pretragu'. Korisnik tada može unijeti podatke za pretraživanje. Pri dohvaćanju rezultata, aplikacija mora provjeriti ima li knjiga dostupnih registriranih ponuditelja. Ako nema, onda se knjigu ne smije prikazivati tijekom pretraživanja u sustavu. Nakon što se navedeno provjeri, prikazuju se sve pronađene knjige. Korisnik može ponoviti ovaj postupak dok ne odustane od pretraživanje ili napusti stranicu za pretraživanje. 
+	\section*{Dijagram aktivnosti}
+	Proces pretraživanja započinje tako što korisnik odabere opciju "pretraživanje knjiga". Nakon toga mu se otvara forma za unos podataka. Nakon potvrde upisanih podataka, web aplikacija se spaja na bazu podataka i pokušava tražene dohvatiti podatke iz nje. Prije slanja, potrebno je provjeriti ima li knjiga dostupnih registriranih ponuditelja. Nakon provjere, ako su potrebni podaci pronađeni, aplikacija označava lokacije ponuditelja na karti. Ako korisnik ne stisne te oznake na karti ili nema pronađenih podataka, pretraživanje završava. Ako korisnik stisne bilo koje oznake na karti, web aplikacija pokušava dobiti sve knjige dotičnog ponuditelja iz baze podataka. Nakon uspješnog dobivanja podataka, oni se prikazuju na stranici.
+	\section*{Dijagram komponenti}
+	Korisnik pristupa web aplikaciji koristeći web preglednik i sučelje REST API koje podržava operacije GET i POST protokola HTTP. Usluga za kartu OpenStreetMap također komunicira s web aplikacijom preko sučelja REST API. Web aplikacija je organizirana modularno. Modul REST odgovara na upite korisnika, komunicira s uslugom za kartu i modulom Server. Modul Server je zadužen za dohvaćanje i obradu podatka iz baze koristeći sučelje SQL API te komunikaciju s modulom Administrator.
+	
+	
+\end{document}
